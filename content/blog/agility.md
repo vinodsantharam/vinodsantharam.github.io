@@ -119,10 +119,10 @@ It bought us trust, and trust is the oxygen of every agile team.
 
 As a new project lead, I told management:
 
-> _"We will work through MVPs.\
+> _We will work through MVPs.\
 > We will change how we apply agility.\
 > We will focus on clarity and accuracy, without compromising the final
-> product."_
+> product._
 
 The team hated story points. Not because they didn't work, because they
 were unfamiliar. So I compromised: **planning poker with hours**.
