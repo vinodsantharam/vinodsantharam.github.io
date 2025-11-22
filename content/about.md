@@ -5,17 +5,18 @@ description: Learn more about my background and experience
 
 ## Hello! I'm Vinod Santharam
 
-I'm a **Senior Frontend Engineer** and **DevOps specialist** with a passion for building scalable, performant web applications.
+I'm a **Team Lead**, **Senior Frontend Engineer** and **UX Product Design** specialist.
 
 ### Skills & Expertise
 
-- **Frontend Development**: React, Next.js, TypeScript, JavaScript, HTML5, CSS3
-- **State Management**: Redux, Context API, Zustand
-- **Styling**: Tailwind CSS, CSS Modules, Styled Components
-- **DevOps**: CI/CD, Docker, Kubernetes, GitHub Actions
-- **Cloud Platforms**: AWS, Azure, Google Cloud
-- **Backend**: Node.js, Express, REST APIs
-- **Testing**: Jest, React Testing Library, Cypress
+- **Frontend Development**: React, Next.js, Angular, TypeScript, JavaScript, HTML5, CSS3, RxJS
+- **State Management**: Redux, Zustand
+- **Styling**: Tailwind CSS, Material, CSS Modules
+- **DevOps**: CI/CD, Docker
+- **Cloud Platforms**: AWS, Azure
+- **Backend**: Node.js, .NET, REST APIs
+- **Database**: SQL Server, MongoDB
+- **Testing**: Jest, React Testing Library, Playright, Gherkin Cucumber
 
 ### Professional Experience
 
@@ -23,9 +24,11 @@ Throughout my career, I've worked on various challenging projects that required 
 
 1. Building responsive and accessible web applications
 2. Optimizing application performance
-3. Setting up robust CI/CD pipelines
-4. Implementing best practices and coding standards
-5. Mentoring junior developers
+3. Implementing best practices and coding standards
+4. Mentoring junior developers
+5. Leading team
+6. Designing UX flows
+7. Acting as Scrum master
 
 ### Education
 
@@ -37,4 +40,4 @@ Feel free to reach out if you'd like to discuss technology, collaboration opport
 
 ---
 
-> "The only way to do great work is to love what you do." - Steve Jobs
+> It doesn't make sense to hire smart people and then tell them what to to , We hire smart people so they can tell us what to do. - Steve Jobs
