@@ -28,18 +28,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <Link
         href="/blog"
-        className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6"
+        className="inline-flex items-center text-primary hover:text-primary/80 mb-6"
       >
         ← Back to Blog
       </Link>
 
       <article>
         <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-foreground mb-4">
             {post.frontmatter.title}
           </h1>
 
-          <div className="flex items-center gap-4 text-gray-600 mb-4">
+          <div className="flex items-center gap-4 text-muted-foreground mb-4">
             {post.frontmatter.date && (
               <time dateTime={post.frontmatter.date}>
                 {new Date(post.frontmatter.date).toLocaleDateString("en-US", {
@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {post.frontmatter.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm"
+                  className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
                 >
                   {tag}
                 </span>
