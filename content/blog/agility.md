@@ -27,8 +27,7 @@ they always come down to the same three forces:
 
 Many companies treat agility like a cookbook: follow the steps, bake the
 cake, collect applause.\
-But without the right ingredients---trust, communication, psychological
-safety---your cheesecake collapses.
+But without the right ingredients, **trust**, **communication**, **psychological safety**, your cheesecake collapses.
 
 Sometimes you don't even have enough sugar, but everyone pretends it
 will "do."
@@ -51,13 +50,17 @@ And appointing a **project manager or CEO as Scrum Master**?\
 That's like asking the referee to coach the team. The conflict of
 interest is baked in.
 
+Probably my favorite example: cancelling retrospectives because they’re “too time-consuming,” only to organize one every three months or when the tension in the team is about to explode.
+
+Meetings must have meaning, purpose, and outcomes. Agile ceremonies (or any meeting) really should exist because they solve something, not because the calendar says so.
+
 Teams are not interchangeable. You can gather the most talented people
 in the league, and still, they may never become champions. **History
 matters. Chemistry matters.** Sometimes a single newcomer shifts the
 entire balance.
 
 Yet I've seen teams march through daily ceremonies with zero emotion,
-zero intention;just rituals performed out of habit.
+zero intention; just rituals performed out of habit.
 
 "We are agile," they say.
 
@@ -85,9 +88,10 @@ team instead of forcing a template.
 
 Their secret weapon was **context**.
 
-One of them, my mentor, often reminded me:\
-\> _"Understand the human behind the behavior, and the process will
-follow."_
+One of them, my mentor, often reminded me:
+
+> _"Understand the human behind the behavior, and the process will
+> follow. It's all about context."_
 
 He was right.
 
@@ -103,11 +107,13 @@ That's when you see a team's true agility.
 And by "team," I mean everyone:
 
 - stakeholders
+- product owner
 - designers
 - business analysts
 - QA
 - developers
 - architects
+- ...
 
 On one greenfield project, we survived by slicing the product into
 **MVPs**.\
@@ -138,11 +144,11 @@ on time**.
 
 That moment defined our agility.
 
-- We cut scope.
-- We redefined MVPs.
-- We reorganized meetings.
-- We switched to Kanban.
-- We worked smarter, and yes, sometimes harder.
+- We cut scope
+- We redefined MVPs
+- We reorganized meetings
+- We switched to Kanban
+- We worked smarter, and yes, sometimes harder
 
 We even organized overtime "parties," turning a stressful sprint into a
 collective mission. It wasn't ideal, but it was honest, and it worked.
