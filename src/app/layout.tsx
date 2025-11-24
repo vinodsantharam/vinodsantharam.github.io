@@ -47,6 +47,12 @@ export default function RootLayout({
                       Blog
                     </Link>
                     <Link
+                      href="/books"
+                      className="text-muted-foreground hover:text-primary"
+                    >
+                      Books
+                    </Link>
+                    <Link
                       href="/about"
                       className="text-muted-foreground hover:text-primary"
                     >

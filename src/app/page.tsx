@@ -24,6 +24,18 @@ export default function Home() {
         </Link>
 
         <Link
+          href="/books"
+          className="block p-6 bg-card rounded-lg shadow-md hover:shadow-lg transition-shadow border border-border"
+        >
+          <h2 className="text-2xl font-bold text-card-foreground mb-2">
+            Books
+          </h2>
+          <p className="text-muted-foreground">
+            Read my thoughts on books I've read and my favorite quotes.
+          </p>
+        </Link>
+
+        <Link
           href="/about"
           className="block p-6 bg-card rounded-lg shadow-md hover:shadow-lg transition-shadow border border-border"
         >
