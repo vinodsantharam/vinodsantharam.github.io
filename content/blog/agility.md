@@ -88,12 +88,12 @@ team instead of forcing a template.
 
 Their secret weapon was **context**.
 
-One of them, my mentor, often reminded me:
+One of them, my mentor [François Lachance](https://www.linkedin.com/in/lachancefrancois/), often reminded me:
 
 > _"Understand the human behind the behavior, and the process will
-> follow. It's all about context."_
+> follow. **Context** is everything."_
 
-He was right.
+He is right.
 
 Being agile is not about ceremonies.\
 It's about **adaptation**.
@@ -116,10 +116,10 @@ And by "team," I mean everyone:
 - ...
 
 On one greenfield project, we survived by slicing the product into
-**MVPs**.\
-We skipped authentication.\
-We skipped permissions.\
-We focused on delivering something users could touch.
+**MVPs (Minimum Viable Product)**.\
+We intentionally postponed technical features (e.g., authentication, permissions) to avoid early slowdowns.\
+We flagged "nice-to-have" items for future soft releases to keep the scope tight.\
+We focused on delivering tangible, testable value that users could interact with as early as possible.
 
 It bought us trust, and trust is the oxygen of every agile team.
 
