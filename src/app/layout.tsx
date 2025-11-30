@@ -31,7 +31,7 @@ export default function RootLayout({
                     href="/"
                     className="text-xl font-bold text-foreground hover:text-primary"
                   >
-                    Vinod Santharam
+                    Vinod <span className="hidden md:inline">Santharam</span>
                   </Link>
                   <div className="flex items-center gap-6">
                     <Link
@@ -45,6 +45,12 @@ export default function RootLayout({
                       className="text-muted-foreground hover:text-primary"
                     >
                       Blog
+                    </Link>
+                    <Link
+                      href="/books"
+                      className="text-muted-foreground hover:text-primary"
+                    >
+                      Books
                     </Link>
                     <Link
                       href="/about"
