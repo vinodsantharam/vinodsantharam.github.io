@@ -15,9 +15,9 @@ interface BookCardProps {
 
 export function BookCard({ book }: BookCardProps) {
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-lg flex flex-col sm:flex-row h-full">
+    <Card className="overflow-hidden transition-all hover:shadow-lg flex flex-col sm:flex-row sm:h-[400px]">
       {/* Left side - Book Cover */}
-      <div className="relative w-full sm:w-64 h-64 sm:h-auto flex-shrink-0 bg-muted">
+      <div className="relative w-full sm:w-72 h-64 sm:h-auto flex-shrink-0 bg-muted">
         <Image
           src={book.coverImage}
           alt={`${book.title} cover`}
@@ -41,24 +41,26 @@ export function BookCard({ book }: BookCardProps) {
             </span>
           )}
         </CardHeader>
-        <CardContent className="flex-1 pt-0">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-              <Quote className="h-4 w-4 text-primary" />
-              <span>Favorite Quotes</span>
-            </div>
+        {book.favoriteQuotes.length > 0 && (
+          <CardContent className="flex-1 pt-0">
             <div className="space-y-3">
-              {book.favoriteQuotes.map((quote, index) => (
-                <blockquote
-                  key={index}
-                  className="border-l-2 border-primary pl-4 italic text-sm text-muted-foreground leading-relaxed"
-                >
-                  &ldquo;{quote}&rdquo;
-                </blockquote>
-              ))}
+              <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
+                <Quote className="h-4 w-4 text-primary" />
+                <span>Favorite Quotes</span>
+              </div>
+              <div className="space-y-3">
+                {book.favoriteQuotes.map((quote, index) => (
+                  <blockquote
+                    key={index}
+                    className="border-l-2 border-primary pl-4 italic text-sm text-muted-foreground leading-relaxed"
+                  >
+                    &ldquo;{quote}&rdquo;
+                  </blockquote>
+                ))}
+              </div>
             </div>
-          </div>
-        </CardContent>
+          </CardContent>
+        )}
       </div>
     </Card>
   );

@@ -17,15 +17,17 @@ export default function BooksPage() {
         </h1>
         <p className="text-xl text-muted-foreground max-w-3xl">
           A curated collection of books that have shaped my perspective on
-          software development, design, productivity, and life. Each book comes
+          software development, design, productivity, and life. Some books come
           with my favorite quotes that resonated with me.
         </p>
       </div>
 
       <div className="space-y-8 max-w-5xl">
-        {books.map((book) => (
-          <BookCard key={book.id} book={book} />
-        ))}
+        {books
+          .sort((a, b) => a.title.localeCompare(b.title))
+          .map((book) => (
+            <BookCard key={book.id} book={book} />
+          ))}
       </div>
 
       {books.length === 0 && (
