@@ -59,7 +59,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {post.frontmatter.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+                  className="px-3 py-1 bg-gray-300/40 text-primary rounded-full text-sm"
                 >
                   {tag}
                 </span>

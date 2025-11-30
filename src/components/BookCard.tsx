@@ -36,7 +36,7 @@ export function BookCard({ book }: BookCardProps) {
             {book.year && ` • ${book.year}`}
           </CardDescription>
           {book.genre && (
-            <span className="inline-block mt-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium w-fit">
+            <span className="inline-block mt-2 px-3 py-1 bg-gray-300/40 text-primary rounded-full text-xs font-medium w-fit">
               {book.genre}
             </span>
           )}
