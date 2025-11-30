@@ -90,8 +90,8 @@ Their secret weapon was **context**.
 
 One of them, my mentor [François Lachance](https://www.linkedin.com/in/lachancefrancois/), often reminded me:
 
-> _"Understand the human behind the behavior, and the process will
-> follow. **Context** is everything."_
+> _Understand the human behind the behavior, and the process will
+> follow. **Context** is everything._
 
 He is right.
 
