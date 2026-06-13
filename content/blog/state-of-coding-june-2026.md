@@ -213,3 +213,7 @@ So here's what that discipline looks like in practice:
 - **Do your own testing.** The agent wrote the tests too, so you're the last line of defense.
 
 The tools will keep changing — half the names in this post will feel dated in six months. The foundations won't, and neither will the discipline: clear your context, plan before you prompt, review what you ship, and remember that at the end of the day, the code is yours.
+
+---
+
+_A special mention for [Matt Pocock](https://github.com/mattpocock): a lot of how I work today traces back to his teaching — from his TypeScript days to his agent skills. His [`skills` repo](https://github.com/mattpocock/skills), pulled straight from his own `.claude` directory, has crossed **127k stars** — and every one of them is deserved. Go star it, then go grill your agents._
