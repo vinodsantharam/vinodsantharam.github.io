@@ -16,6 +16,10 @@ If you use AI without solid programming foundations, you will be replaced.
 
 Don't get me wrong: I love AI. I love programming with AI, and I don't see myself going back to _traditional_ software programming. But there are a couple of things we don't talk about — or talk about too little: how to use AI properly, and the mental fatigue.
 
+> "There's a new kind of coding I call 'vibe coding', where you fully give in to the vibes, embrace exponentials, and forget that the code even exists."
+>
+> — [Andrej Karpathy](https://x.com/karpathy/status/1886192184808149383), who coined the term in early 2025
+
 Let me start with the part nobody admits.
 
 ## The pace never stops
@@ -73,6 +77,12 @@ After more than a year and a half of `vibe` coding, I can say it has saved my li
 
 Pioneers in software engineering like Martin Fowler, Kent Beck, and Uncle Bob Martin are coding with AI too. But they don't put aside their architectural knowledge or expect the `model` to substitute for it. In fact, LLMs can't master the art of software architecture **today** without a bare minimum of _context_.
 
+> "The value of 90% of my skills just dropped to \$0. The leverage for the remaining 10% went up 1000x."
+>
+> — [Kent Beck](https://tidyfirst.substack.com/p/90-of-my-skills-are-now-worth-0)
+
+The 10% he means is judgment: vision, design, controlling complexity — not where the brackets go. That's the part AI can't do for you yet, and the reason foundations matter more now, not less.
+
 ### Domain Driven Design
 
 Sometimes a business requirement implies major changes across two features. If you haven't properly organized your source code, how can the LLM take the right approach — or even understand the link between these two features?\
@@ -109,6 +119,8 @@ Tokens are the coins you insert into the machine to make the magic happen. Some 
 ### Window
 
 There might be a better word for it, but to keep it simple: this is the "prompt" we send to the machine. The machine keeps adding more and more `tokens` to the context. The model has a limit on how many tokens fit in its context. Beware: agentic tools like Claude Code, Kiro, Cursor, and Gravity behave differently when the context is about to overflow. That's why, after a couple of prompts, the agent starts to `hallucinate`. The reason is usually that the first tokens in the session get wiped out to let the latest tokens in.
+
+![A fixed-size context window: new tokens push in from the right while the oldest tokens are evicted and forgotten, which is when the agent starts to hallucinate](/context-window.svg)
 
 ### Agent.md
 
@@ -180,6 +192,12 @@ _Left: straight to a guess. Right: grilled into the right plan._
 It's a competition over who does better on task A than the other. Why not just bet on the top model from the benchmarks for the company's major release? At what cost? Which model should you pick for which kind of task?
 
 We need to use the right model for the right task, because they don't all perform the same way — and they come with different costs.
+
+| Task | Model | Why |
+|------|-------|-----|
+| Planning, architecture, hard reasoning | **Opus 4.X** | best reasoning; worth the tokens where mistakes are expensive |
+| Implementing well-defined tasks, most coding | **Sonnet** | fast and much cheaper for execution |
+| Trivial, repetitive, high-volume edits | **Haiku** | cheapest; fine when there's little to reason about |
 
 ## Staying human
 
