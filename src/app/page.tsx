@@ -31,7 +31,7 @@ export default function Home() {
             Books
           </h2>
           <p className="text-muted-foreground">
-            Read my thoughts on books I've read and my favorite quotes.
+            Read my thoughts on books I&apos;ve read and my favorite quotes.
           </p>
         </Link>
 

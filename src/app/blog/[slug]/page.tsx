@@ -52,6 +52,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.frontmatter.author && (
               <span>by {post.frontmatter.author}</span>
             )}
+            <span>{post.readingTime}</span>
           </div>
 
           {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (

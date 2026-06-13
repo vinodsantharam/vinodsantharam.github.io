@@ -41,6 +41,7 @@ export default function BlogPage() {
                 {post.frontmatter.author && (
                   <span>by {post.frontmatter.author}</span>
                 )}
+                <span>{post.readingTime}</span>
               </div>
 
               {post.frontmatter.description && (
