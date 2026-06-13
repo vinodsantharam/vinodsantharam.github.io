@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img" aria-labelledby="t d" font-family="ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif">
+  <title id="t">How a context window overflows</title>
+  <desc id="d">A fixed-size context window full of tokens. New tokens push in from the right; the oldest tokens on the left are evicted and forgotten. When it overflows, the earliest context is dropped — that is when the agent starts to hallucinate.</desc>
+
+  <defs>
+    <marker id="cwarrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#AFAFC0"/>
+    </marker>
+  </defs>
+
+  <!-- card -->
+  <rect x="1" y="1" width="758" height="298" rx="18" fill="#FFFFFF" stroke="#E6E6F0" stroke-width="1.5"/>
+
+  <!-- title -->
+  <text x="32" y="48" font-size="17" font-weight="700" fill="#27272A">Context window (fixed size)</text>
+
+  <!-- evicted tokens (left, fading out) -->
+  <g>
+    <rect x="40" y="96" width="34" height="40" rx="7" fill="#F0EEF7" stroke="#E2DEF2" stroke-width="1" opacity="0.35"/>
+    <rect x="80" y="96" width="34" height="40" rx="7" fill="#EBE8F4" stroke="#DDD8EF" stroke-width="1" opacity="0.6"/>
+  </g>
+  <path d="M120 116 l-46 0" stroke="#AFAFC0" stroke-width="2" marker-end="url(#cwarrow)"/>
+  <text x="40" y="166" font-size="13" fill="#9A3A22" font-weight="600">oldest tokens</text>
+  <text x="40" y="183" font-size="13" fill="#B0654F">evicted → forgotten</text>
+
+  <!-- the window (full of tokens) -->
+  <rect x="132" y="86" width="470" height="60" rx="12" fill="#F7F7FB" stroke="#6C5CE7" stroke-width="2"/>
+  <g fill="#E8E5FA" stroke="#CFC6F3" stroke-width="1">
+    <rect x="146" y="96" width="34" height="40" rx="7"/>
+    <rect x="186" y="96" width="34" height="40" rx="7"/>
+    <rect x="226" y="96" width="34" height="40" rx="7"/>
+    <rect x="266" y="96" width="34" height="40" rx="7"/>
+    <rect x="306" y="96" width="34" height="40" rx="7"/>
+    <rect x="346" y="96" width="34" height="40" rx="7"/>
+    <rect x="386" y="96" width="34" height="40" rx="7"/>
+    <rect x="426" y="96" width="34" height="40" rx="7"/>
+    <rect x="466" y="96" width="34" height="40" rx="7"/>
+    <rect x="506" y="96" width="34" height="40" rx="7"/>
+    <rect x="546" y="96" width="34" height="40" rx="7"/>
+  </g>
+  <text x="367" y="170" text-anchor="middle" font-size="13" fill="#6C5CE7" font-weight="600">full — every token costs</text>
+
+  <!-- new tokens in (right) -->
+  <path d="M620 116 l-32 0" stroke="#AFAFC0" stroke-width="2" marker-end="url(#cwarrow)"/>
+  <g fill="#DCD7F7" stroke="#C3B9F0" stroke-width="1">
+    <rect x="626" y="96" width="34" height="40" rx="7"/>
+    <rect x="666" y="96" width="34" height="40" rx="7"/>
+  </g>
+  <text x="626" y="166" font-size="13" fill="#4B3FB0" font-weight="600">newest</text>
+  <text x="626" y="183" font-size="13" fill="#4B3FB0">prompt in</text>
+
+  <!-- note -->
+  <line x1="32" y1="226" x2="728" y2="226" stroke="#EFF0F5" stroke-width="1.5"/>
+  <text x="32" y="258" font-size="14.5" fill="#3A3A48">When it overflows, the earliest context is dropped —</text>
+  <text x="32" y="280" font-size="14.5" fill="#3A3A48">that's when the agent starts to <tspan font-style="italic" fill="#9A3A22" font-weight="600">hallucinate</tspan>.</text>
+</svg>
