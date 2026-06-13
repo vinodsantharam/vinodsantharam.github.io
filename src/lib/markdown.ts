@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import readingTime from 'reading-time'
 
 const contentDirectory = path.join(process.cwd(), 'content')
 
@@ -15,6 +16,7 @@ export interface MarkdownPost {
     [key: string]: any
   }
   content: string
+  readingTime: string
 }
 
 export function getMarkdownFiles(directory: string): string[] {
@@ -25,7 +27,7 @@ export function getMarkdownFiles(directory: string): string[] {
   }
 
   const files = fs.readdirSync(fullPath)
-  return files.filter(file => file.endsWith('.md') || file.endsWith('.mdx'))
+  return files.filter(file => file.endsWith('.md'))
 }
 
 export function getMarkdownContent(filePath: string): MarkdownPost | null {
@@ -44,6 +46,7 @@ export function getMarkdownContent(filePath: string): MarkdownPost | null {
     slug,
     frontmatter: data as MarkdownPost['frontmatter'],
     content,
+    readingTime: readingTime(content).text,
   }
 }
 

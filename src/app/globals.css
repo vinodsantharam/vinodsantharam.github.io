@@ -1,4 +1,7 @@
 @import "tailwindcss";
+/* highlight.js light theme — token colors. Dark palette is overridden below
+   under .dark so it tracks next-themes instead of prefers-color-scheme. */
+@import "highlight.js/styles/github.css";
 @plugin "@tailwindcss/typography";
 
 @theme {
@@ -129,9 +132,12 @@ body {
   border: 1px solid hsl(var(--color-border));
 }
 
-.markdown-content pre code {
+/* Let highlight.js token colors govern; keep our muted <pre> background by
+   making the .hljs <code> transparent. No forced color here, or it would
+   override the theme's token spans. */
+.markdown-content pre code,
+.markdown-content pre code.hljs {
   @apply bg-transparent p-0;
-  color: hsl(var(--color-foreground));
 }
 
 .markdown-content blockquote {
@@ -165,4 +171,63 @@ body {
 .markdown-content hr {
   @apply my-8;
   border-color: hsl(var(--color-border));
+}
+
+/* Heading anchor links (rehype-autolink-headings, behavior: 'wrap').
+   Keep heading styling; only reveal an underline on hover. */
+.markdown-content :is(h1, h2, h3, h4, h5, h6) a {
+  color: inherit;
+  text-decoration: none;
+}
+.markdown-content :is(h1, h2, h3, h4, h5, h6) a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Dark-mode syntax highlighting. The github.css import above is the light
+   palette; these override token colors under next-themes' .dark class so code
+   reads well on the dark muted <pre> background. Palette: github-dark. */
+.dark .markdown-content .hljs {
+  color: #c9d1d9;
+}
+.dark .markdown-content .hljs-comment,
+.dark .markdown-content .hljs-quote,
+.dark .markdown-content .hljs-meta {
+  color: #8b949e;
+}
+.dark .markdown-content .hljs-keyword,
+.dark .markdown-content .hljs-selector-tag,
+.dark .markdown-content .hljs-subst,
+.dark .markdown-content .hljs-type,
+.dark .markdown-content .hljs-class .hljs-title {
+  color: #ff7b72;
+}
+.dark .markdown-content .hljs-string,
+.dark .markdown-content .hljs-doctag,
+.dark .markdown-content .hljs-regexp,
+.dark .markdown-content .hljs-link {
+  color: #a5d6ff;
+}
+.dark .markdown-content .hljs-number,
+.dark .markdown-content .hljs-literal,
+.dark .markdown-content .hljs-variable,
+.dark .markdown-content .hljs-template-variable {
+  color: #79c0ff;
+}
+.dark .markdown-content .hljs-title,
+.dark .markdown-content .hljs-section,
+.dark .markdown-content .hljs-selector-id {
+  color: #d2a8ff;
+}
+.dark .markdown-content .hljs-tag,
+.dark .markdown-content .hljs-name,
+.dark .markdown-content .hljs-attribute {
+  color: #7ee787;
+}
+.dark .markdown-content .hljs-built_in,
+.dark .markdown-content .hljs-builtin-name,
+.dark .markdown-content .hljs-symbol,
+.dark .markdown-content .hljs-bullet,
+.dark .markdown-content .hljs-attr {
+  color: #ffa657;
 }
