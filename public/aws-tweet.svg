@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 250" width="550" height="250" role="img" aria-labelledby="t d" font-family="ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif">
+  <title id="t">Amazon Web Services (@awscloud) on X</title>
+  <desc id="d">Tweet from Amazon Web Services (@awscloud): “More AI-generated code doesn't make your team faster. It might actually slow you down.”</desc>
+
+  <!-- card -->
+  <rect x="1" y="1" width="548" height="248" rx="16" fill="#FFFFFF" stroke="#EFF3F4" stroke-width="1.5"/>
+
+  <!-- avatar -->
+  <g>
+    <circle cx="48" cy="48" r="24" fill="#232F3E"/>
+    <text x="48" y="46" text-anchor="middle" font-size="14" font-weight="700" fill="#FFFFFF" letter-spacing="0.5">aws</text>
+    <!-- smile swoosh -->
+    <path d="M37 56 q11 7 22 0" fill="none" stroke="#FF9900" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M57.5 53.5 l1.8 2.6 l-3.1 0.4 z" fill="#FF9900"/>
+  </g>
+
+  <!-- name + verified -->
+  <text x="84" y="42" font-size="16" font-weight="700" fill="#0F1419">Amazon Web Services</text>
+  <g transform="translate(259,30)">
+    <circle cx="9" cy="9" r="9" fill="#1D9BF0"/>
+    <path d="M5 9.2 l2.4 2.4 l4.2 -4.6" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="84" y="62" font-size="14" fill="#536471">@awscloud</text>
+
+  <!-- X logo (top-right) -->
+  <g transform="translate(502,26) scale(0.9)">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#0F1419"/>
+  </g>
+
+  <!-- body -->
+  <text font-size="22" fill="#0F1419" letter-spacing="0.1">
+    <tspan x="24" y="112">More AI-generated code doesn't make</tspan>
+    <tspan x="24" y="143">your team faster. It might actually</tspan>
+    <tspan x="24" y="174">slow you down.</tspan>
+  </text>
+
+  <!-- footer -->
+  <line x1="24" y1="204" x2="526" y2="204" stroke="#EFF3F4" stroke-width="1.5"/>
+  <text x="24" y="228" font-size="14" fill="#536471">Jun 2026 · x.com</text>
+</svg>
