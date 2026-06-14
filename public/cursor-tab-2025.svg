@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-labelledby="title desc" font-family="ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, sans-serif">
+  <title id="title">Tab key presses in Cursor across 2025</title>
+  <desc id="desc">I pressed Tab 8,532 times in Cursor during 2025. Monthly counts: May 33, June 492, July 1,476, August 3,274 (the peak), September 650, October 806, November 1,154, December 647.</desc>
+
+  <!-- card -->
+  <rect x="1" y="1" width="758" height="378" rx="18" fill="#FFFFFF" stroke="#E6E6F0" stroke-width="1.5"/>
+
+  <!-- headline -->
+  <text x="32" y="56" font-size="15" font-weight="600" fill="#9A9AA8" letter-spacing="0.5">MY FAVORITE KEY IN 2025</text>
+  <text x="32" y="116" font-size="58" font-weight="800" fill="#27272A">8,532</text>
+
+  <!-- tab key glyph + caption -->
+  <g>
+    <rect x="244" y="80" width="78" height="42" rx="9" fill="#F7F7FB" stroke="#D8D4EC" stroke-width="1.5"/>
+    <text x="283" y="107" font-size="17" font-weight="600" fill="#6C5CE7" text-anchor="middle">tab</text>
+    <text x="338" y="98" font-size="16" fill="#52525B">presses — accepting an</text>
+    <text x="338" y="119" font-size="16" fill="#52525B">autocomplete suggestion before I finished typing it.</text>
+  </g>
+
+  <!-- baseline -->
+  <line x1="40" y1="320" x2="720" y2="320" stroke="#ECECF3" stroke-width="1.5"/>
+
+  <!-- bars: baseline y=320, peak (Aug 3,274) = 170px tall -->
+  <!-- May 33 -->
+  <rect x="66"  y="317" width="44" height="3"   rx="3" fill="#E8E5FA" stroke="#CFC6F3" stroke-width="1"/>
+  <text x="88"  y="305" font-size="12" fill="#9A9AA8" text-anchor="middle">33</text>
+  <text x="88"  y="340" font-size="13" fill="#71717A" text-anchor="middle">May</text>
+
+  <!-- Jun 492 -->
+  <rect x="148" y="294" width="44" height="26"  rx="3" fill="#E8E5FA" stroke="#CFC6F3" stroke-width="1"/>
+  <text x="170" y="282" font-size="12" fill="#9A9AA8" text-anchor="middle">492</text>
+  <text x="170" y="340" font-size="13" fill="#71717A" text-anchor="middle">Jun</text>
+
+  <!-- Jul 1,476 -->
+  <rect x="230" y="243" width="44" height="77"  rx="3" fill="#E8E5FA" stroke="#CFC6F3" stroke-width="1"/>
+  <text x="252" y="231" font-size="12" fill="#9A9AA8" text-anchor="middle">1,476</text>
+  <text x="252" y="340" font-size="13" fill="#71717A" text-anchor="middle">Jul</text>
+
+  <!-- Aug 3,274 (peak) -->
+  <rect x="312" y="150" width="44" height="170" rx="3" fill="#E8531A" stroke="#C8420F" stroke-width="1"/>
+  <text x="334" y="138" font-size="13" font-weight="700" fill="#C8420F" text-anchor="middle">3,274</text>
+  <text x="334" y="340" font-size="13" font-weight="700" fill="#C8420F" text-anchor="middle">Aug</text>
+
+  <!-- Sep 650 -->
+  <rect x="394" y="286" width="44" height="34"  rx="3" fill="#E8E5FA" stroke="#CFC6F3" stroke-width="1"/>
+  <text x="416" y="274" font-size="12" fill="#9A9AA8" text-anchor="middle">650</text>
+  <text x="416" y="340" font-size="13" fill="#71717A" text-anchor="middle">Sep</text>
+
+  <!-- Oct 806 -->
+  <rect x="476" y="278" width="44" height="42"  rx="3" fill="#E8E5FA" stroke="#CFC6F3" stroke-width="1"/>
+  <text x="498" y="266" font-size="12" fill="#9A9AA8" text-anchor="middle">806</text>
+  <text x="498" y="340" font-size="13" fill="#71717A" text-anchor="middle">Oct</text>
+
+  <!-- Nov 1,154 -->
+  <rect x="558" y="260" width="44" height="60"  rx="3" fill="#E8E5FA" stroke="#CFC6F3" stroke-width="1"/>
+  <text x="580" y="248" font-size="12" fill="#9A9AA8" text-anchor="middle">1,154</text>
+  <text x="580" y="340" font-size="13" fill="#71717A" text-anchor="middle">Nov</text>
+
+  <!-- Dec 647 -->
+  <rect x="640" y="286" width="44" height="34"  rx="3" fill="#E8E5FA" stroke="#CFC6F3" stroke-width="1"/>
+  <text x="662" y="274" font-size="12" fill="#9A9AA8" text-anchor="middle">647</text>
+  <text x="662" y="340" font-size="13" fill="#71717A" text-anchor="middle">Dec</text>
+
+  <!-- footnote -->
+  <text x="32" y="366" font-size="12" fill="#A1A1AA">August was peak Cursor: most Tab presses and my longest 13-day streak.</text>
+</svg>
