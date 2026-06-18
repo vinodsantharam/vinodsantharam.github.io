@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" width="940" height="520" role="img" aria-labelledby="title desc" font-family="ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, sans-serif">
+  <title id="title">Before and after: deleting the tree</title>
+  <desc id="desc">Before: a stack of four pieces — treeview, virtualization library, Redux store, and side panel. After: a single chain — the URL drives a section reader — with the virtualization library and the Redux store removed.</desc>
+
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#AFAFC0"/>
+    </marker>
+  </defs>
+
+  <!-- card -->
+  <rect x="1" y="1" width="938" height="518" rx="20" fill="#FFFFFF" stroke="#E6E6F0" stroke-width="1.5"/>
+
+  <!-- divider -->
+  <line x1="470" y1="74" x2="470" y2="470" stroke="#ECECF3" stroke-width="1.5" stroke-dasharray="3 6"/>
+
+  <!-- column titles -->
+  <text x="235" y="46" text-anchor="middle" font-size="19" font-weight="700" fill="#D9583B">Before</text>
+  <text x="235" y="65" text-anchor="middle" font-size="12.5" fill="#9A9AB0">four moving parts to fake a document</text>
+  <text x="705" y="46" text-anchor="middle" font-size="19" font-weight="700" fill="#6C5CE7">After</text>
+  <text x="705" y="65" text-anchor="middle" font-size="12.5" fill="#9A9AB0">render the section you're reading</text>
+
+  <!-- ===================== LEFT: the old stack ===================== -->
+  <line x1="235" y1="142" x2="235" y2="170" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="235" y1="222" x2="235" y2="250" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="235" y1="302" x2="235" y2="330" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <g>
+    <rect x="95" y="96" width="280" height="46" rx="10" fill="#F4F4F8" stroke="#D7D7E2" stroke-width="1.5"/>
+    <text x="235" y="124" text-anchor="middle" font-size="14.5" fill="#27272A">Treeview</text>
+  </g>
+  <g>
+    <rect x="95" y="176" width="280" height="46" rx="10" fill="#FBEBE6" stroke="#E7B2A2" stroke-width="1.5"/>
+    <text x="235" y="204" text-anchor="middle" font-size="14.5" fill="#9A3A22">Virtualization library</text>
+  </g>
+  <g>
+    <rect x="95" y="256" width="280" height="46" rx="10" fill="#FBEBE6" stroke="#E7B2A2" stroke-width="1.5"/>
+    <text x="235" y="284" text-anchor="middle" font-size="14.5" fill="#9A3A22">Redux store</text>
+  </g>
+  <g>
+    <rect x="95" y="336" width="280" height="46" rx="10" fill="#F4F4F8" stroke="#D7D7E2" stroke-width="1.5"/>
+    <text x="235" y="364" text-anchor="middle" font-size="14.5" fill="#27272A">Side panel</text>
+  </g>
+  <text x="235" y="420" text-anchor="middle" font-size="13" font-style="italic" fill="#B0654F">Optimizing a tree that shouldn't exist.</text>
+
+  <!-- ===================== RIGHT: the new stack ===================== -->
+  <line x1="705" y1="142" x2="705" y2="170" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow2)"/>
+
+  <g>
+    <rect x="565" y="96" width="280" height="46" rx="10" fill="#F1EFFC" stroke="#CFC6F3" stroke-width="1.5"/>
+    <text x="705" y="124" text-anchor="middle" font-size="14.5" font-weight="600" fill="#4B3FB0">URL (the selected clause)</text>
+  </g>
+  <g>
+    <rect x="565" y="176" width="280" height="46" rx="10" fill="#6C5CE7" stroke="#5848d6" stroke-width="1.5"/>
+    <text x="705" y="204" text-anchor="middle" font-size="14.5" font-weight="600" fill="#FFFFFF">Section reader</text>
+  </g>
+
+  <!-- deleted tags -->
+  <g>
+    <rect x="565" y="256" width="280" height="42" rx="10" fill="#F7F7FA" stroke="#E2E2EA" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <text x="588" y="282" font-size="14" font-weight="700" fill="#B6B6C2">&#10005;</text>
+    <text x="612" y="282" font-size="14" fill="#A6A6B4" text-decoration="line-through">Virtualization library</text>
+    <text x="822" y="282" text-anchor="end" font-size="11.5" font-weight="600" fill="#9A9AB0">removed</text>
+  </g>
+  <g>
+    <rect x="565" y="306" width="280" height="42" rx="10" fill="#F7F7FA" stroke="#E2E2EA" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <text x="588" y="332" font-size="14" font-weight="700" fill="#B6B6C2">&#10005;</text>
+    <text x="612" y="332" font-size="14" fill="#A6A6B4" text-decoration="line-through">Redux store</text>
+    <text x="822" y="332" text-anchor="end" font-size="11.5" font-weight="600" fill="#9A9AB0">removed</text>
+  </g>
+  <text x="705" y="420" text-anchor="middle" font-size="13" font-style="italic" fill="#6C5CE7">I didn't make the tree faster. I deleted it.</text>
+</svg>
