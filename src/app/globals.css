@@ -126,6 +126,13 @@ body {
   color: hsl(var(--color-foreground));
 }
 
+/* The typography plugin wraps inline <code> in literal backticks via
+   ::before/::after. We render our own code chip, so strip them. */
+.markdown-content code::before,
+.markdown-content code::after {
+  content: none;
+}
+
 .markdown-content pre {
   @apply p-4 rounded-lg overflow-x-auto mb-4;
   background-color: hsl(var(--color-muted));
@@ -144,6 +151,14 @@ body {
   @apply pl-4 italic my-4;
   border-left: 4px solid hsl(var(--color-primary));
   color: hsl(var(--color-foreground) / 0.8);
+}
+
+/* The typography plugin adds curly quotation marks around blockquote
+   paragraphs via ::before/::after. Our quotes already include their own
+   punctuation, so remove the injected pair to avoid doubled quotes. */
+.markdown-content blockquote p:first-of-type::before,
+.markdown-content blockquote p:last-of-type::after {
+  content: none;
 }
 
 .markdown-content table {

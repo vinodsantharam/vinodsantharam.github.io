@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 590" width="940" height="590" role="img" aria-labelledby="title desc" font-family="ui-sans-serif, system-ui, -apple-system, &quot;Segoe UI&quot;, Roboto, sans-serif">
+  <title id="title">One metaphor, two bills</title>
+  <desc id="desc">The treeview metaphor splits into two chains. Left, the render path: heavy nodes lead to list virtualization, which needs fixed row heights, which forces the ellipsis — the user's bill. Right, the state path: the tree and panel need to share the selected clause, but the team used Redux as a magic box for everything and skipped basic parent/child component communication, producing needless complexity — the developer's bill.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#AFAFC0"/>
+    </marker>
+  </defs>
+
+  <!-- card -->
+  <rect x="1" y="1" width="938" height="588" rx="20" fill="#FFFFFF" stroke="#E6E6F0" stroke-width="1.5"/>
+
+  <!-- ===================== ROOT ===================== -->
+  <g>
+    <rect x="320" y="34" width="300" height="50" rx="12" fill="#F1EFFC" stroke="#CFC6F3" stroke-width="1.5"/>
+    <text x="470" y="58" text-anchor="middle" font-size="16" font-weight="700" fill="#4B3FB0">The treeview metaphor</text>
+    <text x="470" y="76" text-anchor="middle" font-size="12" fill="#9A9AB0">the one decision nobody validated</text>
+  </g>
+
+  <!-- split from root to the two columns -->
+  <path d="M420,84 C360,108 250,108 250,134" fill="none" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M520,84 C580,108 690,108 690,134" fill="none" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- column labels -->
+  <text x="250" y="126" text-anchor="middle" font-size="12.5" font-weight="600" fill="#9A9AB0">RENDER PATH</text>
+  <text x="690" y="126" text-anchor="middle" font-size="12.5" font-weight="600" fill="#9A9AB0">STATE PATH</text>
+
+  <!-- ===================== LEFT: render path ===================== -->
+  <line x1="250" y1="186" x2="250" y2="216" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="250" y1="268" x2="250" y2="298" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="250" y1="350" x2="250" y2="380" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect x="120" y="140" width="260" height="46" rx="10" fill="#F4F4F8" stroke="#D7D7E2" stroke-width="1.5"/>
+    <text x="250" y="168" text-anchor="middle" font-size="14.5" fill="#27272A">Heavy nodes (lots of HTML)</text>
+  </g>
+  <g>
+    <rect x="120" y="222" width="260" height="46" rx="10" fill="#F4F4F8" stroke="#D7D7E2" stroke-width="1.5"/>
+    <text x="250" y="250" text-anchor="middle" font-size="14.5" fill="#27272A">List virtualization</text>
+  </g>
+  <g>
+    <rect x="120" y="304" width="260" height="46" rx="10" fill="#F4F4F8" stroke="#D7D7E2" stroke-width="1.5"/>
+    <text x="250" y="332" text-anchor="middle" font-size="14.5" fill="#27272A">Fixed row height</text>
+  </g>
+  <g>
+    <rect x="120" y="386" width="260" height="54" rx="10" fill="#FBEBE6" stroke="#E7B2A2" stroke-width="1.5"/>
+    <text x="250" y="410" text-anchor="middle" font-size="14.5" font-weight="700" fill="#9A3A22">The ellipsis  …</text>
+    <text x="250" y="429" text-anchor="middle" font-size="12.5" fill="#B0654F">the user's bill</text>
+  </g>
+
+  <!-- ===================== RIGHT: state path ===================== -->
+  <line x1="690" y1="186" x2="690" y2="216" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="690" y1="268" x2="690" y2="298" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="690" y1="350" x2="690" y2="380" stroke="#AFAFC0" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect x="560" y="140" width="260" height="46" rx="10" fill="#F4F4F8" stroke="#D7D7E2" stroke-width="1.5"/>
+    <text x="690" y="168" text-anchor="middle" font-size="14.5" fill="#27272A">Tree ↔ panel must sync</text>
+  </g>
+  <g>
+    <rect x="560" y="222" width="260" height="46" rx="10" fill="#F4F4F8" stroke="#D7D7E2" stroke-width="1.5"/>
+    <text x="690" y="250" text-anchor="middle" font-size="14.5" fill="#27272A">Redux as a magic box</text>
+  </g>
+  <g>
+    <rect x="560" y="304" width="260" height="46" rx="10" fill="#F4F4F8" stroke="#D7D7E2" stroke-width="1.5"/>
+    <text x="690" y="332" text-anchor="middle" font-size="14.5" fill="#27272A">Parent/child basics skipped</text>
+  </g>
+  <g>
+    <rect x="560" y="386" width="260" height="54" rx="10" fill="#FBEBE6" stroke="#E7B2A2" stroke-width="1.5"/>
+    <text x="690" y="410" text-anchor="middle" font-size="14.5" font-weight="700" fill="#9A3A22">Needless complexity</text>
+    <text x="690" y="429" text-anchor="middle" font-size="12.5" fill="#B0654F">the dev's bill</text>
+  </g>
+
+  <!-- ===================== JOIN: same debt ===================== -->
+  <path d="M250,440 C250,486 420,486 440,492" fill="none" stroke="#E7B2A2" stroke-width="2" stroke-dasharray="3 5"/>
+  <path d="M690,440 C690,486 520,486 500,492" fill="none" stroke="#E7B2A2" stroke-width="2" stroke-dasharray="3 5"/>
+
+  <g>
+    <rect x="335" y="492" width="270" height="46" rx="10" fill="#D9583B" stroke="#c2492f" stroke-width="1.5"/>
+    <text x="470" y="520" text-anchor="middle" font-size="14.5" font-weight="700" fill="#FFFFFF">The same technical debt</text>
+  </g>
+
+  <text x="470" y="566" text-anchor="middle" font-size="13" font-style="italic" fill="#B0654F">One metaphor. Two bills.</text>
+</svg>
