@@ -1,5 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getAllMarkdownPosts } from "@/lib/markdown";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Writing by Vinod Santharam on software development, AI-assisted coding, UX, agility, and engineering leadership.",
+  alternates: {
+    canonical: "/blog/",
+  },
+};
 
 export default function BlogPage() {
   const posts = getAllMarkdownPosts("blog");

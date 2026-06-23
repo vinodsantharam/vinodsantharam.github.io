@@ -1,6 +1,16 @@
 import { getMarkdownContent } from "@/lib/markdown";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "About Vinod Santharam — Team Lead, Frontend Engineer and UX Product Design specialist. Background, skills, and professional experience.",
+  alternates: {
+    canonical: "/about/",
+  },
+};
 
 export default function AboutPage() {
   const post = getMarkdownContent("about.md");

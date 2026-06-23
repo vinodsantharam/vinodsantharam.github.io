@@ -1,8 +1,47 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: siteConfig.title,
+  },
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        name: siteConfig.author,
+        url: siteConfig.url,
+        jobTitle: "Team Lead, Frontend Engineer & UX Product Design specialist",
+        description: siteConfig.description,
+      },
+      {
+        "@type": "WebSite",
+        name: siteConfig.name,
+        url: siteConfig.url,
+        author: {
+          "@type": "Person",
+          name: siteConfig.author,
+          url: siteConfig.url,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold text-foreground mb-4">Welcome</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

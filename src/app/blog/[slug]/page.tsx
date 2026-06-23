@@ -2,6 +2,8 @@ import { getPostBySlug, getAllMarkdownPosts } from "@/lib/markdown";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -16,6 +18,47 @@ export function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug("blog", slug);
+
+  if (!post) {
+    return {};
+  }
+
+  const { title, description, date, tags } = post.frontmatter;
+  const canonical = `/blog/${slug}/`;
+
+  return {
+    title,
+    description,
+    keywords: tags,
+    authors: [{ name: post.frontmatter.author ?? siteConfig.author }],
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      type: "article",
+      url: canonical,
+      title,
+      description,
+      siteName: siteConfig.name,
+      locale: siteConfig.locale,
+      publishedTime: date,
+      modifiedTime: date,
+      authors: [post.frontmatter.author ?? siteConfig.author],
+      tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
   const post = getPostBySlug("blog", slug);
@@ -24,8 +67,38 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const articleUrl = `${siteConfig.url}/blog/${slug}/`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.frontmatter.title,
+    description: post.frontmatter.description,
+    datePublished: post.frontmatter.date,
+    dateModified: post.frontmatter.date,
+    keywords: post.frontmatter.tags?.join(", "),
+    author: {
+      "@type": "Person",
+      name: post.frontmatter.author ?? siteConfig.author,
+      url: siteConfig.url,
+    },
+    publisher: {
+      "@type": "Person",
+      name: siteConfig.author,
+      url: siteConfig.url,
+    },
+    url: articleUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": articleUrl,
+    },
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link
         href="/blog"
         className="inline-flex items-center text-primary hover:text-primary/80 mb-6"
