@@ -13,7 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteConfig.url}/blog/`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${siteConfig.url}/books/`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${siteConfig.url}/resume/`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${siteConfig.url}/about/`, lastModified: now, changeFrequency: "yearly", priority: 0.6 },
   ];
 
   const blogRoutes: MetadataRoute.Sitemap = getAllMarkdownPosts("blog").map(

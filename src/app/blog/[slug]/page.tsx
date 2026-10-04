@@ -1,5 +1,6 @@
 import { getPostBySlug, getAllMarkdownPosts } from "@/lib/markdown";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
+import { ReadingProgress } from "@/components/ReadingProgress";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -94,31 +95,33 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-3xl mx-auto px-4 sm:px-8 pt-8 pb-20">
+      <ReadingProgress />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Link
         href="/blog"
-        className="inline-flex items-center text-primary hover:text-primary/80 mb-6"
+        className="inline-flex items-center font-mono text-xs text-muted-foreground hover:text-foreground mb-8"
       >
-        ← Back to Blog
+        ← Writing
       </Link>
 
       <article>
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            {post.frontmatter.title}
-          </h1>
-
-          <div className="flex items-center gap-4 text-muted-foreground mb-4">
+        <header className="mb-10 grid gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-muted-foreground">
             {post.frontmatter.date && (
-              <time dateTime={post.frontmatter.date}>
+              <time
+                dateTime={new Date(post.frontmatter.date)
+                  .toISOString()
+                  .slice(0, 10)}
+              >
                 {new Date(post.frontmatter.date).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
+                  timeZone: "UTC",
                 })}
               </time>
             )}
@@ -128,12 +131,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <span>{post.readingTime}</span>
           </div>
 
+          <h1 className="font-mono font-semibold tracking-tight text-[clamp(1.5rem,3vw,2rem)] leading-tight text-balance">
+            {post.frontmatter.title}
+          </h1>
+
           {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-            <div className="flex gap-2 flex-wrap mb-6">
+            <div className="flex gap-1.5 flex-wrap">
               {post.frontmatter.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 bg-gray-300/40 text-primary rounded-full text-sm"
+                  className="px-2.5 py-1 rounded-md bg-muted text-muted-foreground text-xs"
                 >
                   {tag}
                 </span>

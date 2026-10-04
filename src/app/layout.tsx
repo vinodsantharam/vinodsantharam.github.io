@@ -1,9 +1,34 @@
 import type { Metadata } from "next";
+import { Martian_Mono, Source_Serif_4, Work_Sans } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { siteConfig } from "@/lib/site";
+
+const martianMono = Martian_Mono({
+  subsets: ["latin"],
+  variable: "--font-martian-mono",
+  display: "swap",
+});
+
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-work-sans",
+  display: "swap",
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-source-serif",
+  display: "swap",
+});
+
+const navLinks = [
+  { href: "/blog", label: "Writing" },
+  { href: "/books", label: "Books" },
+];
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -51,8 +76,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${martianMono.variable} ${workSans.variable} ${sourceSerif.variable}`}
+    >
+      <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -60,58 +89,63 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen flex flex-col">
-            <header className="border-b border-border bg-background print:hidden">
-              <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                <div className="flex items-center justify-between">
-                  <Link
-                    href="/"
-                    className="text-xl font-bold text-foreground hover:text-primary"
+            <header className="bg-background print:hidden">
+              <nav className="max-w-6xl mx-auto px-4 sm:px-8 py-5 flex items-center justify-between gap-4">
+                <Link
+                  href="/"
+                  className="flex items-center gap-2.5 font-mono text-[13px] font-semibold tracking-tight text-foreground"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="grid place-items-center size-7 rounded-md bg-foreground text-background text-[11px]"
                   >
-                    Vinod <span className="hidden md:inline">Santharam</span>
+                    VS
+                  </span>
+                  <span className="hidden sm:inline">Vinod Santharam</span>
+                </Link>
+                <div className="flex items-center gap-4 sm:gap-6 text-sm">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                  <Link
+                    href="/resume"
+                    className="text-foreground border border-border rounded-full px-3 py-1.5 hover:border-foreground/40 transition-colors"
+                  >
+                    Resume
                   </Link>
-                  <div className="flex items-center gap-4 sm:gap-6">
-                    <Link
-                      href="/"
-                      className="hidden sm:inline text-muted-foreground hover:text-primary"
-                    >
-                      Home
-                    </Link>
-                    <Link
-                      href="/blog"
-                      className="text-muted-foreground hover:text-primary"
-                    >
-                      Blog
-                    </Link>
-                    <Link
-                      href="/books"
-                      className="text-muted-foreground hover:text-primary"
-                    >
-                      Books
-                    </Link>
-                    <Link
-                      href="/about"
-                      className="text-muted-foreground hover:text-primary"
-                    >
-                      About
-                    </Link>
-                    <Link
-                      href="/resume"
-                      className="text-muted-foreground hover:text-primary"
-                    >
-                      Resume
-                    </Link>
-                    <ThemeToggle />
-                  </div>
+                  <ThemeToggle />
                 </div>
               </nav>
             </header>
             <main className="flex-1">{children}</main>
-            <footer className="border-t border-border bg-muted/50 print:hidden">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <p className="text-center text-muted-foreground text-sm">
-                  © {new Date().getFullYear()} Vinod Santharam. All rights
-                  reserved.
+            <footer className="border-t border-border print:hidden">
+              <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
+                <p className="font-mono text-xs">
+                  © {new Date().getFullYear()} Vinod Santharam · Bangkok
                 </p>
+                <div className="flex gap-5">
+                  <a
+                    href="https://www.linkedin.com/in/vinodsantharam"
+                    className="hover:text-foreground"
+                  >
+                    LinkedIn
+                  </a>
+                  <a
+                    href="https://github.com/vinodsantharam"
+                    className="hover:text-foreground"
+                  >
+                    GitHub
+                  </a>
+                  <Link href="/resume" className="hover:text-foreground">
+                    Resume
+                  </Link>
+                </div>
               </div>
             </footer>
           </div>

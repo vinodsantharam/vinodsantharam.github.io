@@ -1,5 +1,5 @@
-/* /resume styles. Scoped under .resume-page so they don't leak into the rest
-   of the site before the site-wide redesign lands. Two depths:
+/* /resume styles, scoped under .resume-page. Fonts come from the site
+   theme in globals.css. Two depths:
    [data-depth="brief"] hides .resume-full; printing keeps whichever is on. */
 
 .resume-page {
@@ -15,8 +15,8 @@
   --r-night-muted: #7d8697;
   --r-dot: #3a4558;
   --r-glow: #f2b45a;
-  --r-mono: var(--resume-font-mono), ui-monospace, Menlo, monospace;
-  --r-sans: var(--resume-font-sans), "Segoe UI", system-ui, sans-serif;
+  --r-mono: var(--font-mono);
+  --r-sans: var(--font-sans);
 
   background: var(--r-bg);
   color: var(--r-ink);

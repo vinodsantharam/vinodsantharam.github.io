@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Martian_Mono, Work_Sans } from "next/font/google";
 import { ResumeDepth } from "@/components/resume/ResumeDepth";
 import { ResumeMap, type CityStop } from "@/components/resume/ResumeMap";
 import {
@@ -14,18 +13,6 @@ import {
 import { siteConfig } from "@/lib/site";
 import { getWorldMap } from "@/lib/world-map";
 import "./resume.css";
-
-const mono = Martian_Mono({
-  subsets: ["latin"],
-  variable: "--resume-font-mono",
-  display: "swap",
-});
-
-const sans = Work_Sans({
-  subsets: ["latin"],
-  variable: "--resume-font-sans",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Resume",
@@ -165,7 +152,7 @@ export default function ResumePage() {
   );
 
   return (
-    <div className={`${mono.variable} ${sans.variable} resume-page`}>
+    <div className="resume-page">
       <ResumeDepth
         header={header}
         aside={
