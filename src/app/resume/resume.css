@@ -9,6 +9,12 @@
   --r-muted: #5c6473;
   --r-line: #dde1e8;
   --r-accent: #2f55d4;
+  --r-night: #10141b;
+  --r-night-line: #232a36;
+  --r-night-ink: #c9cfd9;
+  --r-night-muted: #7d8697;
+  --r-dot: #3a4558;
+  --r-glow: #f2b45a;
   --r-mono: var(--resume-font-mono), ui-monospace, Menlo, monospace;
   --r-sans: var(--resume-font-sans), "Segoe UI", system-ui, sans-serif;
 
@@ -26,17 +32,206 @@
   --r-muted: #98a1b0;
   --r-line: #262c37;
   --r-accent: #7d9bff;
+  --r-night: #090c11;
+  --r-night-line: #1d232d;
 }
 
-.resume {
-  max-width: 760px;
+.resume-layout {
+  max-width: 1180px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
   background: var(--r-surface);
   border: 1px solid var(--r-line);
   border-radius: 14px;
+  /* clip, not hidden: hidden would make this a scroll container and
+     break the sticky map. */
+  overflow: clip;
+}
+
+.resume {
   padding: 40px;
   display: grid;
   gap: 28px;
+  align-content: start;
+  min-width: 0;
+}
+
+.resume-aside {
+  background: var(--r-night);
+  color: var(--r-night-ink);
+  min-width: 0;
+}
+
+.resume-map {
+  position: sticky;
+  top: 0;
+  padding: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.resume-map-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font: 400 11px/1.5 var(--r-mono);
+  color: var(--r-night-muted);
+}
+
+.resume-map-head b {
+  color: var(--r-night-ink);
+  font-weight: 500;
+}
+
+.resume-map-box {
+  aspect-ratio: 2 / 1;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--r-night-line);
+  border-radius: 8px;
+}
+
+.resume-map-box svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.resume-map-camera {
+  transform-origin: 0 0;
+  transition: transform 1.1s cubic-bezier(0.3, 0.1, 0.2, 1);
+}
+
+.resume-map-dots {
+  fill: none;
+  stroke: var(--r-dot);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.resume-map-route {
+  fill: none;
+  stroke: var(--r-night-muted);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+  opacity: 0.45;
+  vector-effect: non-scaling-stroke;
+}
+
+.resume-map-city .halo {
+  opacity: 0.18;
+  transition: opacity 0.9s ease;
+}
+
+.resume-map-city .core {
+  fill: var(--r-glow);
+  opacity: 0.55;
+  transition: opacity 0.6s ease;
+}
+
+.resume-map-city .ring {
+  fill: none;
+  stroke: var(--r-glow);
+  stroke-width: 1;
+  opacity: 0;
+  vector-effect: non-scaling-stroke;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.resume-map-city.is-lit .halo,
+.resume-map-city.is-lit .core {
+  opacity: 1;
+}
+
+.resume-map-city.is-lit .ring {
+  animation: resume-map-ring 2.8s ease-out infinite;
+}
+
+@keyframes resume-map-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+.resume-map-caption {
+  display: grid;
+  gap: 2px;
+  min-height: 48px;
+}
+
+.resume-map-caption .place {
+  font: 500 14px/1.4 var(--r-mono);
+}
+
+.resume-map-caption .detail {
+  font: 400 12px/1.5 var(--r-sans);
+  color: var(--r-night-muted);
+}
+
+.resume-role[data-map-label] {
+  cursor: default;
+  margin-inline: -12px;
+  padding-inline: 12px;
+  transition: background-color 0.25s ease;
+}
+
+.resume-role[data-map-label]:focus-visible {
+  outline: 2px solid var(--r-accent);
+  outline-offset: 2px;
+}
+
+.resume-role.is-mapped {
+  background: var(--r-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-map-camera,
+  .resume-map-city .halo,
+  .resume-map-city .core,
+  .resume-role[data-map-label] {
+    transition: none;
+  }
+  .resume-map-city.is-lit .ring {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .resume-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  /* The map becomes a band pinned to the top of the viewport and follows
+     the role scrolled into view. */
+  .resume-aside {
+    order: -1;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .resume-map {
+    position: static;
+    padding: 12px 16px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: 6px 14px;
+  }
+  .resume-map-head {
+    display: none;
+  }
+  .resume-map-box {
+    grid-row: span 2;
+  }
+  .resume-map-caption {
+    min-height: 0;
+  }
 }
 
 .resume-top {
@@ -246,12 +441,25 @@
     font-size: 10pt;
   }
 
-  .resume {
+  .resume-layout {
+    display: block;
     max-width: none;
     border: 0;
     border-radius: 0;
+  }
+
+  .resume-aside {
+    display: none;
+  }
+
+  .resume {
     padding: 0;
     gap: 14px;
+  }
+
+  .resume-role[data-map-label] {
+    margin-inline: 0;
+    padding-inline: 0;
   }
 
   .resume-toggle {

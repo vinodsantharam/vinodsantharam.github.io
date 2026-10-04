@@ -14,6 +14,8 @@ export interface Position {
 export interface Role {
   company: string
   location: string
+  // Key into the world map's cities (src/lib/world-map.ts); omit for remote-only.
+  city?: string
   workplace?: string
   summary: string
   positions: Position[]
@@ -23,6 +25,7 @@ export interface Education {
   degree: string
   school: string
   location: string
+  city?: string
   start: string
   end: string
   focus: string

@@ -14,6 +14,7 @@
     {
       "company": "2C2P (Ant Group)",
       "location": "Bangkok, Thailand",
+      "city": "bangkok",
       "workplace": "On-site",
       "summary": "Leads a greenfield product, from Figma UX flows to a Next.js monorepo and a shared component registry.",
       "positions": [
@@ -44,6 +45,7 @@
     {
       "company": "Liveblocks",
       "location": "Montréal, Canada",
+      "city": "montreal",
       "workplace": "Remote",
       "summary": "Built open-source examples, customer APIs and starter kits for a real-time collaboration platform.",
       "positions": [
@@ -65,6 +67,7 @@
     {
       "company": "Nexus Innovations",
       "location": "Montréal, Canada",
+      "city": "montreal",
       "workplace": "Hybrid",
       "summary": "Shaped frontend architecture, led Angular apps and built a React UI kit, with some .NET on the side.",
       "positions": [
@@ -86,6 +89,7 @@
     {
       "company": "nag informatik AG",
       "location": "Basel, Switzerland",
+      "city": "basel",
       "summary": "Owned frontend architecture and designed the UI in Figma, after two years as a senior full-stack developer.",
       "positions": [
         {
@@ -118,6 +122,7 @@
     {
       "company": "GSOFT (now WorkLeap)",
       "location": "Montréal, Canada",
+      "city": "montreal",
       "summary": "Redesigned a WPF application as XAML integrator and led its custom controls architecture.",
       "positions": [
         {
@@ -137,6 +142,7 @@
     {
       "company": "Orckestra",
       "location": "Montréal, Canada",
+      "city": "montreal",
       "summary": "Built Orckestra Commerce Cloud features, then led a Windows 10 point-of-sale app for B2B customers.",
       "positions": [
         {
@@ -158,6 +164,7 @@
     {
       "company": "Euro Information Développements (Crédit Mutuel)",
       "location": "Strasbourg, France",
+      "city": "strasbourg",
       "summary": "Migrated a legacy z/OS banking system to .NET and shipped the Silverlight app built on it.",
       "positions": [
         {
@@ -175,6 +182,7 @@
     {
       "company": "IGBMC",
       "location": "Strasbourg, France",
+      "city": "strasbourg",
       "summary": "Prototyped a web portal on IBM WebSphere for a biomedical research institute.",
       "positions": [
         {
@@ -215,6 +223,7 @@
       "degree": "Master of Science",
       "school": "University of Strasbourg",
       "location": "Strasbourg, France",
+      "city": "strasbourg",
       "start": "2009-09",
       "end": "2011-09",
       "focus": "Software engineering, algorithms, bioinformatics, networks, semantics"
@@ -223,6 +232,7 @@
       "degree": "Bachelor of Science",
       "school": "University of Strasbourg",
       "location": "Strasbourg, France",
+      "city": "strasbourg",
       "start": "2005-09",
       "end": "2009-09",
       "focus": "Software engineering, databases, data structures, mathematics"
@@ -248,12 +258,30 @@
     "Claude Code / Cursor / Kiro"
   ],
   "languages": [
-    { "name": "French", "level": "Fluent" },
-    { "name": "English", "level": "Fluent" },
-    { "name": "Tamil", "level": "Fluent" },
-    { "name": "German", "level": "Advanced" },
-    { "name": "Japanese", "level": "Beginner" },
-    { "name": "Thai", "level": "Beginner" }
+    {
+      "name": "French",
+      "level": "Fluent"
+    },
+    {
+      "name": "English",
+      "level": "Fluent"
+    },
+    {
+      "name": "Tamil",
+      "level": "Fluent"
+    },
+    {
+      "name": "German",
+      "level": "Advanced"
+    },
+    {
+      "name": "Japanese",
+      "level": "Beginner"
+    },
+    {
+      "name": "Thai",
+      "level": "Beginner"
+    }
   ],
   "interests": [
     "Muay Thai",
