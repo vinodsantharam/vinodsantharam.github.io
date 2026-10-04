@@ -304,6 +304,17 @@
   color: var(--r-ink);
 }
 
+.resume-download {
+  margin: -12px 0 0;
+  font: 400 12px/1.6 var(--r-mono);
+  color: var(--r-muted);
+}
+
+.resume-download a {
+  color: var(--r-accent);
+  text-underline-offset: 3px;
+}
+
 .resume-facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -462,7 +473,8 @@
     padding-inline: 0;
   }
 
-  .resume-toggle {
+  .resume-toggle,
+  .resume-download {
     display: none;
   }
 

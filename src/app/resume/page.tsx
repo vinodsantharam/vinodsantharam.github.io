@@ -184,6 +184,13 @@ export default function ResumePage() {
           </li>
         </ul>
 
+        {/* Generated from this page's print layout on every deploy
+            (scripts/build-resume-pdf.mjs). */}
+        <p className="resume-download">
+          Download PDF: <a href="/vinod_santharam_resume.pdf">30-second view</a>{" "}
+          · <a href="/vinod_santharam_resume_full.pdf">full story</a>
+        </p>
+
         <dl className="resume-facts">
           <div>
             <dt>{yearsOfExperience(resume)} years</dt>
