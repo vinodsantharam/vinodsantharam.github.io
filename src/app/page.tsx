@@ -1,5 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { MapStrip } from "@/components/MapStrip";
+import { books } from "@/lib/books";
+import { getAllMarkdownPosts } from "@/lib/markdown";
+import { getResume, yearsOfExperience } from "@/lib/resume";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -12,7 +17,20 @@ export const metadata: Metadata = {
   },
 };
 
+function formatDate(date: string) {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 export default function Home() {
+  const posts = getAllMarkdownPosts("blog").slice(0, 3);
+  const shelf = books.slice(0, 10);
+  const years = yearsOfExperience(getResume());
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -37,70 +55,104 @@ export default function Home() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-8 pb-20 grid gap-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="text-center mb-12">
-        <h1 className="text-5xl font-bold text-foreground mb-4">Welcome</h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Team Lead, Frontend Engineer & UX Product Design specialist with
-          passion for building scalable applications.
-        </p>
-      </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-        <Link
-          href="/blog"
-          className="block p-6 bg-card rounded-lg shadow-md hover:shadow-lg transition-shadow border border-border"
-        >
-          <h2 className="text-2xl font-bold text-card-foreground mb-2">Blog</h2>
-          <p className="text-muted-foreground">
-            Read my thoughts on software development, best practices, and
-            technology trends.
+      <section className="grid md:grid-cols-[1.15fr_1fr] gap-10 items-center">
+        <div className="min-w-0">
+          <h1 className="font-mono font-semibold tracking-tight text-[clamp(1.6rem,3vw,2.1rem)] leading-tight text-balance">
+            I design the experience, then I build it.
+          </h1>
+          <p className="mt-4 text-muted-foreground max-w-[60ch] leading-relaxed">
+            Team lead and frontend engineer in Bangkok. {years} years of
+            shipping products across payments, SaaS and collaboration tools, in
+            France, Switzerland, Canada and Thailand. I write about UX,
+            AI-assisted coding and how teams actually work.
           </p>
-        </Link>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href="/resume"
+              className="rounded-lg bg-foreground text-background px-4 py-2.5 text-sm font-medium hover:opacity-90"
+            >
+              Read the resume
+            </Link>
+            <Link
+              href="/blog"
+              className="rounded-lg border border-border px-4 py-2.5 text-sm font-medium hover:border-foreground/40"
+            >
+              Latest writing
+            </Link>
+          </div>
+        </div>
+        <MapStrip
+          current="bangkok"
+          previous={["montreal", "basel", "strasbourg"]}
+        />
+      </section>
 
+      <section className="grid gap-4" aria-labelledby="latest-writing">
+        <div className="flex justify-between gap-4 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+          <h2 id="latest-writing">Latest writing</h2>
+          <Link
+            href="/blog"
+            className="normal-case tracking-normal text-primary"
+          >
+            All posts →
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              className="group grid gap-2 content-start border-t border-border pt-4"
+            >
+              <span className="font-mono text-[11px] text-muted-foreground">
+                {formatDate(post.frontmatter.date)} · {post.readingTime}
+              </span>
+              <h3 className="font-semibold leading-snug group-hover:text-primary">
+                {post.frontmatter.title}
+              </h3>
+              {post.frontmatter.description && (
+                <p className="text-sm text-muted-foreground line-clamp-3">
+                  {post.frontmatter.description}
+                </p>
+              )}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="grid gap-4" aria-labelledby="shelf">
+        <div className="flex justify-between gap-4 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+          <h2 id="shelf">On the shelf</h2>
+          <Link
+            href="/books"
+            className="normal-case tracking-normal text-primary"
+          >
+            {books.length} books →
+          </Link>
+        </div>
         <Link
           href="/books"
-          className="block p-6 bg-card rounded-lg shadow-md hover:shadow-lg transition-shadow border border-border"
+          className="flex items-end gap-3 overflow-x-auto pb-1 border-b-[3px] border-foreground"
+          aria-label="See all books"
         >
-          <h2 className="text-2xl font-bold text-card-foreground mb-2">
-            Books
-          </h2>
-          <p className="text-muted-foreground">
-            Read my thoughts on books I&apos;ve read and my favorite quotes.
-          </p>
+          {shelf.map((book) => (
+            <Image
+              key={book.title}
+              src={book.coverImage}
+              alt={book.title}
+              width={84}
+              height={128}
+              className="flex-none h-32 w-auto rounded-t-sm shadow-sm transition-transform hover:-translate-y-1"
+            />
+          ))}
         </Link>
-
-        <Link
-          href="/about"
-          className="block p-6 bg-card rounded-lg shadow-md hover:shadow-lg transition-shadow border border-border"
-        >
-          <h2 className="text-2xl font-bold text-card-foreground mb-2">
-            About Me
-          </h2>
-          <p className="text-muted-foreground">
-            Learn more about my background, skills, and professional experience.
-          </p>
-        </Link>
-
-        <a
-          href="/vinod_santharam_resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block p-6 bg-card rounded-lg shadow-md hover:shadow-lg transition-shadow border border-border"
-        >
-          <h2 className="text-2xl font-bold text-card-foreground mb-2">
-            Resume
-          </h2>
-          <p className="text-muted-foreground">
-            Download my resume to see my complete professional history and
-            qualifications.
-          </p>
-        </a>
-      </div>
+      </section>
     </div>
   );
 }

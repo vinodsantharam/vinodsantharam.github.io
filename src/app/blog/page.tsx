@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import { BlogList } from "@/components/BlogList";
 import { getAllMarkdownPosts } from "@/lib/markdown";
 
 export const metadata: Metadata = {
@@ -12,70 +12,30 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const posts = getAllMarkdownPosts("blog");
+  const posts = getAllMarkdownPosts("blog").map((post) => ({
+    slug: post.slug,
+    title: post.frontmatter.title,
+    // gray-matter parses YAML dates into Date objects; normalise to YYYY-MM-DD.
+    date: new Date(post.frontmatter.date).toISOString().slice(0, 10),
+    description: post.frontmatter.description,
+    tags: post.frontmatter.tags ?? [],
+    readingTime: post.readingTime,
+  }));
+
+  // The most used tags become the topic filter.
+  const counts = new Map<string, number>();
+  for (const post of posts) {
+    for (const tag of post.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+  }
+  const topics = [...counts.entries()]
+    .filter(([, n]) => n > 1)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .slice(0, 6)
+    .map(([tag]) => tag);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-4xl font-bold text-foreground mb-8">Blog</h1>
-
-      {posts.length === 0 ? (
-        <p className="text-muted-foreground">
-          No blog posts yet. Check back soon!
-        </p>
-      ) : (
-        <div className="space-y-8">
-          {posts.map((post) => (
-            <article
-              key={post.slug}
-              className="border-b border-border pb-8 last:border-0"
-            >
-              <Link href={`/blog/${post.slug}`} className="group">
-                <h2 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary">
-                  {post.frontmatter.title}
-                </h2>
-              </Link>
-
-              <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                {post.frontmatter.date && (
-                  <time dateTime={post.frontmatter.date}>
-                    {new Date(post.frontmatter.date).toLocaleDateString(
-                      "en-US",
-                      {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      }
-                    )}
-                  </time>
-                )}
-                {post.frontmatter.author && (
-                  <span>by {post.frontmatter.author}</span>
-                )}
-                <span>{post.readingTime}</span>
-              </div>
-
-              {post.frontmatter.description && (
-                <p className="text-foreground/80 mb-3">
-                  {post.frontmatter.description}
-                </p>
-              )}
-
-              {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                <div className="flex gap-2 flex-wrap">
-                  {post.frontmatter.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-gray-300/40 text-primary rounded-full text-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </article>
-          ))}
-        </div>
-      )}
+    <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-8 pb-20">
+      <BlogList posts={posts} topics={topics} />
     </div>
   );
 }

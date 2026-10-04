@@ -11,6 +11,7 @@ Personal website (vinodsantharam.github.io) built with **Next.js 16 App Router**
 ```bash
 npm run dev      # Local dev server (next dev)
 npm run build    # Static export -> ./out  (uses --webpack; `npm run export` is identical)
+npm run pdf      # After build: print /resume to out/vinod_santharam_resume{,_full}.pdf (Playwright)
 npm run lint     # eslint via next lint
 npm start        # Serve a production build (rarely needed; site is static)
 ```
@@ -26,6 +27,8 @@ Node version is pinned to `20` (`.nvmrc` / `.node-version`). There is no test su
 - **Markdown rendering** goes through `src/components/MarkdownRenderer.tsx` (react-markdown + remark-gfm + rehype-raw/rehype-sanitize). Raw HTML in markdown is allowed but sanitized.
 
 - **Books** are hardcoded data, not markdown: `src/lib/books.ts` exports a `books` array consumed by `src/app/books/page.tsx` and `src/components/BookCard.tsx`. Cover images live in `public/`.
+
+- **Resume** is data, not markdown: `content/resume.json`, typed and read by `src/lib/resume.ts`, rendered at `src/app/resume/page.tsx` with styles (including the print stylesheet) in `src/app/resume/resume.css`. The brief/full toggle (`ResumeDepth`) and the world map (`ResumeMap`) are the only client components. The map's dots are computed at build time in `src/lib/world-map.ts` (d3-geo + world-atlas); keep that module out of client imports. The downloadable PDFs are generated from the print layout by `scripts/build-resume-pdf.mjs` in the deploy workflow; there is no checked-in PDF.
 
 - **Theming** uses `next-themes` via `src/components/theme-provider.tsx` (wraps the app in `layout.tsx`) and `theme-toggle.tsx`.
 

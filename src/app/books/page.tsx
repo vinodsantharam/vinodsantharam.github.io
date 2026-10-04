@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 
 export default function BooksPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-6xl mx-auto px-4 sm:px-8 pt-8 pb-20">
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-foreground mb-4">
+        <h1 className="font-mono font-semibold tracking-tight text-2xl text-foreground mb-4">
           Books I&apos;ve Read
         </h1>
-        <p className="text-xl text-muted-foreground max-w-3xl">
+        <p className="text-muted-foreground max-w-3xl leading-relaxed">
           A curated collection of books that have shaped my perspective on
           software development, design, productivity, and life. Some books come
           with my favorite quotes that resonated with me.
