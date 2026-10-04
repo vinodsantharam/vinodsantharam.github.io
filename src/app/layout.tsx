@@ -60,7 +60,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen flex flex-col">
-            <header className="border-b border-border bg-background">
+            <header className="border-b border-border bg-background print:hidden">
               <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <div className="flex items-center justify-between">
                   <Link
@@ -69,10 +69,10 @@ export default function RootLayout({
                   >
                     Vinod <span className="hidden md:inline">Santharam</span>
                   </Link>
-                  <div className="flex items-center gap-6">
+                  <div className="flex items-center gap-4 sm:gap-6">
                     <Link
                       href="/"
-                      className="text-muted-foreground hover:text-primary"
+                      className="hidden sm:inline text-muted-foreground hover:text-primary"
                     >
                       Home
                     </Link>
@@ -94,13 +94,19 @@ export default function RootLayout({
                     >
                       About
                     </Link>
+                    <Link
+                      href="/resume"
+                      className="text-muted-foreground hover:text-primary"
+                    >
+                      Resume
+                    </Link>
                     <ThemeToggle />
                   </div>
                 </div>
               </nav>
             </header>
             <main className="flex-1">{children}</main>
-            <footer className="border-t border-border bg-muted/50">
+            <footer className="border-t border-border bg-muted/50 print:hidden">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 <p className="text-center text-muted-foreground text-sm">
                   © {new Date().getFullYear()} Vinod Santharam. All rights

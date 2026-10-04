@@ -1,0 +1,268 @@
+{
+  "name": "Vinod Santharam",
+  "headline": "Team Lead · Frontend Engineer · UX",
+  "tagline": "Team lead and frontend engineer who designs the UX before writing the code.",
+  "location": "Bangkok, Thailand",
+  "summary": "Software engineer building products since 2010, combining strong technical expertise with mentoring and team-building. Deeply passionate about product design and user experience, I strive to bridge the gap between engineering and customer value.",
+  "contact": {
+    "email": "vinod.santharam@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/vinodsantharam",
+    "github": "https://github.com/vinodsantharam",
+    "website": "https://vinodsantharam.github.io"
+  },
+  "experience": [
+    {
+      "company": "2C2P (Ant Group)",
+      "location": "Bangkok, Thailand",
+      "workplace": "On-site",
+      "summary": "Leads a greenfield product, from Figma UX flows to a Next.js monorepo and a shared component registry.",
+      "positions": [
+        {
+          "title": "Team Lead",
+          "start": "2025-06",
+          "end": null,
+          "highlights": [
+            "Led a greenfield project and the team's agile process",
+            "Designed the UX flows in Figma",
+            "Ran Next.js monorepo projects on Turborepo",
+            "Built a React UI component library (Tailwind CSS, shadcn/ui) and its publishing pipeline as a registry",
+            "Designed and built an AI agent proof of concept with the OpenAI Agents SDK"
+          ]
+        },
+        {
+          "title": "Software Engineer",
+          "start": "2024-07",
+          "end": "2025-08",
+          "highlights": [
+            "Led full development of a high-traffic payment page on Next.js and Tailwind: system design, cloud topology, cost optimisation and Core Web Vitals monitoring",
+            "Drove a greenfield onboarding roadmap, agile delivery and alignment with Product and Design",
+            "Defined UX strategy through Figma flows, influencing Product and Business stakeholders"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Liveblocks",
+      "location": "Montréal, Canada",
+      "workplace": "Remote",
+      "summary": "Built open-source examples, customer APIs and starter kits for a real-time collaboration platform.",
+      "positions": [
+        {
+          "title": "Software Engineer",
+          "start": "2022-05",
+          "end": "2022-12",
+          "highlights": [
+            "Developed the React Native example using Liveblocks",
+            "Designed and built REST APIs on Node.js used by customers",
+            "Added a new feature to the administration section (Next.js)",
+            "Built the foundations of the Next.js starter kit",
+            "Integrated Auth0 into the authentication system",
+            "Wrote documentation"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Nexus Innovations",
+      "location": "Montréal, Canada",
+      "workplace": "Hybrid",
+      "summary": "Shaped frontend architecture, led Angular apps and built a React UI kit, with some .NET on the side.",
+      "positions": [
+        {
+          "title": "Senior Software Engineer",
+          "start": "2020-05",
+          "end": "2022-04",
+          "highlights": [
+            "Took part in frontend decisions inside the architecture team",
+            "Led and developed Angular web applications",
+            "Designed and built a UI kit and custom components with React and MUI",
+            "Wrote the frontend coding guidance",
+            "Trained junior developers on Angular and React, and ran a workshop on RxJS",
+            "Worked on the back end: .NET, C#, SQL Server, Service Bus and Azure Functions"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "nag informatik AG",
+      "location": "Basel, Switzerland",
+      "summary": "Owned frontend architecture and designed the UI in Figma, after two years as a senior full-stack developer.",
+      "positions": [
+        {
+          "title": "UI Architect",
+          "start": "2019-01",
+          "end": "2019-09",
+          "highlights": [
+            "Produced mockups in Figma as the team's UI/UX designer",
+            "Led the frontend architecture and built Angular 8 and Vue.js 2 applications from scratch",
+            "Designed and built the UI kit and custom components with Angular Material",
+            "Advised on Scrum and development process: Git branching, code review, pull requests",
+            "Wrote frontend coding guidance and trained junior developers on Angular, Vue.js, CSS and RxJS",
+            "Gave bi-monthly company talks on UI/UX and on blockchain, and analysed mobile and web trends"
+          ]
+        },
+        {
+          "title": "Software Developer Engineer",
+          "start": "2017-04",
+          "end": "2018-12",
+          "highlights": [
+            "Senior full-stack developer on React, ASP.NET and C#",
+            "Mentored junior developers and coached the support team",
+            "Solved performance issues, from memory leaks to slow stored procedures",
+            "Built a test data generator with React, Redux and Electron",
+            "Ran workshops on Ethereum development and co-ran one on React"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "GSOFT (now WorkLeap)",
+      "location": "Montréal, Canada",
+      "summary": "Redesigned a WPF application as XAML integrator and led its custom controls architecture.",
+      "positions": [
+        {
+          "title": "Software Developer Engineer",
+          "start": "2016-05",
+          "end": "2016-11",
+          "highlights": [
+            "Built custom WPF controls in Microsoft Blend and led their architecture",
+            "Wrote the XAML/MVVM coding guidance and trained developers on WPF",
+            "Worked on the UI/UX revamp with the business analyst and the lead designer",
+            "Resolved performance issues, built development tools and reviewed code",
+            "Awarded best monthly department employee"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Orckestra",
+      "location": "Montréal, Canada",
+      "summary": "Built Orckestra Commerce Cloud features, then led a Windows 10 point-of-sale app for B2B customers.",
+      "positions": [
+        {
+          "title": "Software Developer Engineer",
+          "start": "2013-04",
+          "end": "2016-04",
+          "highlights": [
+            "Led the POS project: technical decisions, full-stack development, analysis, design and code review",
+            "Helped build the redux.NET framework and used it in the POS, developing features test-first with NUnit",
+            "Built Silverlight features on MVVM with Prism, custom controls in Blend, and integrated Telerik controls",
+            "Added a REST API layer with ServiceStack and improved the product management experience",
+            "Customised Microsoft Dynamics AX7 MPOS/CloudPOS in HTML, CSS and TypeScript",
+            "Built a Xamarin Android and iOS proof of concept, and wrote integration tests with SpecFlow",
+            "Onboarded new team members and led knowledge transfer on the frontend stack"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Euro Information Développements (Crédit Mutuel)",
+      "location": "Strasbourg, France",
+      "summary": "Migrated a legacy z/OS banking system to .NET and shipped the Silverlight app built on it.",
+      "positions": [
+        {
+          "title": "Software Developer Engineer",
+          "start": "2011-11",
+          "end": "2012-12",
+          "highlights": [
+            "Silverlight software in production from September 2012, released in Scrum iterations",
+            ".NET information system in production from July 2012",
+            "Batch programs for the BI team in production from December 2011, then reworked for a SAP BusinessObjects upgrade"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "IGBMC",
+      "location": "Strasbourg, France",
+      "summary": "Prototyped a web portal on IBM WebSphere for a biomedical research institute.",
+      "positions": [
+        {
+          "title": "Software Developer Engineer",
+          "start": "2010-09",
+          "end": "2011-09",
+          "highlights": [
+            "Installed and maintained WebSphere Application Server and Portal 7.0",
+            "Built Java/J2EE portlet applications with JSP and jQuery",
+            "Deployed web services with Axis and Tomcat for biological computation in Java and Python"
+          ]
+        }
+      ]
+    }
+  ],
+  "sideProjects": [
+    {
+      "company": "Di Vini",
+      "location": "Remote",
+      "summary": "A wine tasting-notes app in React Native, published on the App Store and Play Store.",
+      "positions": [
+        {
+          "title": "CTO & Principal Software Engineer",
+          "start": "2020-10",
+          "end": "2021-12",
+          "highlights": [
+            "Set up the development environment, libraries and project structure",
+            "Integrated Firebase for storage and Google Analytics for tracking",
+            "Built custom components such as an expander, input and toggle button",
+            "Automated releases with Fastlane"
+          ]
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Science",
+      "school": "University of Strasbourg",
+      "location": "Strasbourg, France",
+      "start": "2009-09",
+      "end": "2011-09",
+      "focus": "Software engineering, algorithms, bioinformatics, networks, semantics"
+    },
+    {
+      "degree": "Bachelor of Science",
+      "school": "University of Strasbourg",
+      "location": "Strasbourg, France",
+      "start": "2005-09",
+      "end": "2009-09",
+      "focus": "Software engineering, databases, data structures, mathematics"
+    }
+  ],
+  "skills": [
+    "React",
+    "Next.js",
+    "Angular",
+    "Vue.js",
+    "TypeScript",
+    "React Native",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "RxJS",
+    "Node.js",
+    ".NET / C#",
+    "Azure",
+    "Figma",
+    "UX design",
+    "Team leadership",
+    "Scrum",
+    "Claude Code / Cursor / Kiro"
+  ],
+  "languages": [
+    { "name": "French", "level": "Fluent" },
+    { "name": "English", "level": "Fluent" },
+    { "name": "Tamil", "level": "Fluent" },
+    { "name": "German", "level": "Advanced" },
+    { "name": "Japanese", "level": "Beginner" },
+    { "name": "Thai", "level": "Beginner" }
+  ],
+  "interests": [
+    "Muay Thai",
+    "Running",
+    "Football",
+    "Table tennis",
+    "Cooking",
+    "Travel",
+    "Reading",
+    "Video games"
+  ]
+}

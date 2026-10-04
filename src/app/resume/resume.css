@@ -1,0 +1,295 @@
+/* /resume styles. Scoped under .resume-page so they don't leak into the rest
+   of the site before the site-wide redesign lands. Two depths:
+   [data-depth="brief"] hides .resume-full; printing keeps whichever is on. */
+
+.resume-page {
+  --r-bg: #f4f5f7;
+  --r-surface: #ffffff;
+  --r-ink: #151922;
+  --r-muted: #5c6473;
+  --r-line: #dde1e8;
+  --r-accent: #2f55d4;
+  --r-mono: var(--resume-font-mono), ui-monospace, Menlo, monospace;
+  --r-sans: var(--resume-font-sans), "Segoe UI", system-ui, sans-serif;
+
+  background: var(--r-bg);
+  color: var(--r-ink);
+  font-family: var(--r-sans);
+  padding-block: 48px 72px;
+  padding-inline: 16px;
+}
+
+.dark .resume-page {
+  --r-bg: #0c0f14;
+  --r-surface: #141820;
+  --r-ink: #e7eaf0;
+  --r-muted: #98a1b0;
+  --r-line: #262c37;
+  --r-accent: #7d9bff;
+}
+
+.resume {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--r-surface);
+  border: 1px solid var(--r-line);
+  border-radius: 14px;
+  padding: 40px;
+  display: grid;
+  gap: 28px;
+}
+
+.resume-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.resume-name {
+  font: 600 28px/1.1 var(--r-mono);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.resume-tagline {
+  margin: 8px 0 0;
+  color: var(--r-muted);
+  max-width: 52ch;
+}
+
+.resume-toggle {
+  display: inline-flex;
+  border: 1px solid var(--r-line);
+  border-radius: 999px;
+  padding: 3px;
+  background: var(--r-bg);
+}
+
+.resume-toggle button {
+  font: 500 13px/1 var(--r-sans);
+  border: 0;
+  background: transparent;
+  color: var(--r-muted);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.resume-toggle button[aria-pressed="true"] {
+  background: var(--r-surface);
+  color: var(--r-ink);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.14);
+}
+
+.resume-toggle button:focus-visible,
+.resume a:focus-visible {
+  outline: 2px solid var(--r-accent);
+  outline-offset: 2px;
+}
+
+.resume-contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  font: 400 12px/1.6 var(--r-mono);
+  color: var(--r-muted);
+}
+
+.resume-contact a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+.resume-contact a:hover {
+  color: var(--r-ink);
+}
+
+.resume-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+
+.resume-facts div {
+  border-top: 2px solid var(--r-ink);
+  padding-top: 8px;
+}
+
+.resume-facts dt {
+  font: 600 16px/1.2 var(--r-mono);
+  letter-spacing: -0.02em;
+}
+
+.resume-facts dd {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--r-muted);
+}
+
+.resume-section {
+  display: grid;
+  gap: 4px;
+}
+
+.resume-section h2 {
+  font: 500 11px/1 var(--r-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--r-muted);
+  margin: 0 0 8px;
+}
+
+.resume-section > p {
+  margin: 0;
+  max-width: 68ch;
+}
+
+.resume-role {
+  display: grid;
+  gap: 4px;
+  padding-block: 12px;
+  border-top: 1px solid var(--r-line);
+  break-inside: avoid;
+}
+
+.resume-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.resume-role h3 {
+  font: 600 15.5px/1.35 var(--r-sans);
+  margin: 0;
+}
+
+.resume-meta {
+  font: 400 11.5px/1.6 var(--r-mono);
+  color: var(--r-muted);
+}
+
+.resume-position {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.resume-summary {
+  margin: 0;
+  font-size: 14.5px;
+}
+
+.resume-role ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 3px;
+  font-size: 14px;
+  color: var(--r-muted);
+}
+
+.resume-role div.resume-full {
+  margin-top: 8px;
+}
+
+.resume-extras {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 28px;
+  border-top: 1px solid var(--r-line);
+  padding-top: 16px;
+}
+
+.resume-extras p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.resume-print-footer {
+  display: none;
+}
+
+.resume[data-depth="brief"] .resume-full {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .resume {
+    padding: 24px 18px;
+  }
+  .resume-facts,
+  .resume-extras {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+
+  .resume-page,
+  .dark .resume-page {
+    --r-bg: #ffffff;
+    --r-surface: #ffffff;
+    --r-ink: #111111;
+    --r-muted: #444444;
+    --r-line: #cccccc;
+    padding: 0;
+    font-size: 10pt;
+  }
+
+  .resume {
+    max-width: none;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    gap: 14px;
+  }
+
+  .resume-toggle {
+    display: none;
+  }
+
+  .resume-name {
+    font-size: 20pt;
+  }
+
+  .resume-contact a {
+    text-decoration: none;
+  }
+
+  .resume-role {
+    padding-block: 7px;
+  }
+
+  .resume-role h3 {
+    font-size: 10.5pt;
+  }
+
+  .resume-summary,
+  .resume-role ul,
+  .resume-extras p {
+    font-size: 9.5pt;
+  }
+
+  .resume-section h2 {
+    break-after: avoid;
+  }
+
+  .resume-print-footer {
+    display: block;
+    margin: 6px 0 0;
+    padding-top: 8px;
+    border-top: 1px solid var(--r-line);
+    font: 400 8pt/1.4 var(--r-mono);
+    color: var(--r-muted);
+  }
+}

@@ -86,20 +86,18 @@ export default function Home() {
           </p>
         </Link>
 
-        <a
-          href="/vinod_santharam_resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href="/resume"
           className="block p-6 bg-card rounded-lg shadow-md hover:shadow-lg transition-shadow border border-border"
         >
           <h2 className="text-2xl font-bold text-card-foreground mb-2">
             Resume
           </h2>
           <p className="text-muted-foreground">
-            Download my resume to see my complete professional history and
-            qualifications.
+            My full professional history, with a short view for a quick
+            read and a print-ready layout.
           </p>
-        </a>
+        </Link>
       </div>
     </div>
   );
