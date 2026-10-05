@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Martian_Mono, Source_Serif_4, Work_Sans } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { Github } from "lucide-react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { SiteFooter } from "@/components/site-footer";
 import { siteConfig } from "@/lib/site";
 
 const martianMono = Martian_Mono({
@@ -103,7 +105,7 @@ export default function RootLayout({
                   </span>
                   <span className="hidden sm:inline">Vinod Santharam</span>
                 </Link>
-                <div className="flex items-center gap-4 sm:gap-6 text-sm">
+                <div className="flex items-center gap-3.5 sm:gap-6 text-sm">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -119,35 +121,20 @@ export default function RootLayout({
                   >
                     Resume
                   </Link>
+                  <a
+                    href="https://github.com/vinodsantharam"
+                    aria-label="GitHub"
+                    title="GitHub"
+                    className="grid place-items-center size-9 rounded-md text-foreground hover:bg-accent transition-colors"
+                  >
+                    <Github className="size-[1.2rem]" aria-hidden="true" />
+                  </a>
                   <ThemeToggle />
                 </div>
               </nav>
             </header>
             <main className="flex-1">{children}</main>
-            <footer className="border-t border-border print:hidden">
-              <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8 flex flex-wrap items-center justify-between gap-4 text-sm text-muted-foreground">
-                <p className="font-mono text-xs">
-                  © {new Date().getFullYear()} Vinod Santharam · Bangkok
-                </p>
-                <div className="flex gap-5">
-                  <a
-                    href="https://www.linkedin.com/in/vinodsantharam"
-                    className="hover:text-foreground"
-                  >
-                    LinkedIn
-                  </a>
-                  <a
-                    href="https://github.com/vinodsantharam"
-                    className="hover:text-foreground"
-                  >
-                    GitHub
-                  </a>
-                  <Link href="/resume" className="hover:text-foreground">
-                    Resume
-                  </Link>
-                </div>
-              </div>
-            </footer>
+            <SiteFooter />
           </div>
         </ThemeProvider>
       </body>
