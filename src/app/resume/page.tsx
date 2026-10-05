@@ -158,7 +158,9 @@ export default function ResumePage() {
         header={header}
         aside={
           <ResumeMap
-            dots={world.dots}
+            inland={world.inland}
+            coast={world.coast}
+            step={world.step}
             cities={stops}
             route={route}
             defaultTitle={journey}
