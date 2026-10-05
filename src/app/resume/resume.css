@@ -17,6 +17,8 @@
   --r-coast: #9aa6bb;
   --r-sea: #121822;
   --r-glow: #f2b45a;
+  --r-lamp: #9a5f12;
+  --r-lamp-soft: #fbf1e1;
   --r-mono: var(--font-mono);
   --r-sans: var(--font-sans);
 
@@ -36,6 +38,8 @@
   --r-accent: #7d9bff;
   --r-night: #090c11;
   --r-night-line: #1d232d;
+  --r-lamp: #e0a54c;
+  --r-lamp-soft: #241c10;
 }
 
 .resume-layout {
@@ -429,6 +433,184 @@
   margin-top: 8px;
 }
 
+.resume-award-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-block: 2px;
+}
+
+.resume-award-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 11px 4px 9px;
+  border: 1px solid var(--r-lamp);
+  border-radius: 999px;
+  background: var(--r-lamp-soft);
+  color: var(--r-lamp);
+  font: 500 11.5px/1.4 var(--r-mono);
+  text-decoration: none;
+}
+
+.resume-award-badge svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  fill: currentColor;
+}
+
+.resume-award-badge:hover {
+  text-decoration: underline;
+}
+
+.resume-award-badge:focus-visible,
+.resume-award-load:focus-visible {
+  outline: 2px solid var(--r-accent);
+  outline-offset: 2px;
+}
+
+.resume-award {
+  margin: 10px 0 0;
+  display: grid;
+  grid-template-columns: minmax(0, 168px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 14px;
+  border: 1px solid var(--r-line);
+  border-radius: 10px;
+  background: var(--r-bg);
+  scroll-margin-top: 80px;
+}
+
+.resume-award.has-video {
+  grid-template-columns: minmax(0, 96px) minmax(0, 1fr);
+}
+
+/* Stand-in frame for a video without a photo: a 9:16 night screen. */
+.resume-award-poster {
+  aspect-ratio: 9 / 16;
+  border-radius: 8px;
+  background: linear-gradient(160deg, var(--r-night-line), var(--r-night));
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.resume-award-poster .play {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--r-glow);
+  display: grid;
+  place-items: center;
+}
+
+.resume-award-poster .play::after {
+  content: "";
+  margin-left: 3px;
+  border-left: 10px solid var(--r-night);
+  border-block: 6px solid transparent;
+}
+
+.resume-award-poster .label {
+  position: absolute;
+  bottom: 8px;
+  font: 500 10px/1 var(--r-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--r-night-muted);
+}
+
+.resume-award img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.resume-award figcaption {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  min-width: 0;
+}
+
+.resume-award figcaption p {
+  margin: 0;
+}
+
+.resume-award-title {
+  font: 600 14.5px/1.4 var(--r-sans);
+}
+
+.resume-award-by {
+  font-size: 13.5px;
+  color: var(--r-muted);
+}
+
+.resume-award-by a {
+  color: var(--r-accent);
+}
+
+.resume-award-load {
+  justify-self: start;
+  text-decoration: none;
+  padding: 7px 12px;
+  border: 1px solid var(--r-line);
+  border-radius: 6px;
+  background: var(--r-surface);
+  color: var(--r-ink);
+  font: 500 11.5px/1.4 var(--r-mono);
+  cursor: pointer;
+}
+
+.resume-award-load:hover {
+  border-color: var(--r-muted);
+}
+
+/* Once the live post is open it carries the photo itself, so the card
+   drops the static one and gives the embed the full width. LinkedIn lays
+   the embed out at about 504px wide, always on white. */
+.resume-award:has(.resume-award-embed) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.resume-award:has(.resume-award-embed) img,
+.resume-award:has(.resume-award-embed) .resume-award-poster {
+  display: none;
+}
+
+.resume-award-embed {
+  width: 100%;
+  max-width: 504px;
+  height: 640px;
+  border: 1px solid var(--r-line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.resume-award-embed.is-video {
+  max-width: 325px;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  background: #000000;
+}
+
+.resume-award-print {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .resume-award {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .resume-award img {
+    max-width: 260px;
+  }
+}
+
 .resume-extras {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px 28px;
@@ -500,6 +682,37 @@
   .resume-toggle,
   .resume-download {
     display: none;
+  }
+
+  .resume-award-badge {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--r-ink);
+    font-size: 8.5pt;
+  }
+
+  .resume-award {
+    display: block;
+    margin: 2px 0 0;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .resume-award img,
+  .resume-award-poster,
+  .resume-award-title,
+  .resume-award-by,
+  .resume-award-load,
+  .resume-award-embed {
+    display: none;
+  }
+
+  .resume-award-print {
+    display: block;
+    font: 400 8pt/1.4 var(--r-mono);
+    color: var(--r-muted);
   }
 
   .resume-name {

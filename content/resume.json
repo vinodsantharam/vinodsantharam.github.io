@@ -17,6 +17,31 @@
       "city": "bangkok",
       "workplace": "On-site",
       "summary": "Leads a greenfield product, from Figma UX flows to a Next.js monorepo and a shared component registry.",
+      "awards": [
+        {
+          "id": "hackathon",
+          "title": "1st runner-up",
+          "event": "2C2P Hackathon",
+          "date": "2026-03",
+          "image": "/2c2p-hackathon-2026.jpg",
+          "imageAlt": "Vinod and three teammates on stage at the 2C2P Hackathon, holding the trophy and the 1st runner-up prize card",
+          "post": {
+            "author": "Palis Luckananurug",
+            "relation": "Coworker",
+            "url": "https://www.linkedin.com/posts/palis-luckananurug-85540722a_we-secured-the-1st-runner-up-2c2p-hackathon-ugcPost-7441179562702520320-iIYY",
+            "embedUrn": "urn:li:ugcPost:7441179562702520320"
+          }
+        },
+        {
+          "id": "performance-award",
+          "title": "Performance award",
+          "event": "2C2P",
+          "video": {
+            "platform": "TikTok",
+            "url": "https://vt.tiktok.com/ZSbQpeLEg/"
+          }
+        }
+      ],
       "positions": [
         {
           "title": "Team Lead",

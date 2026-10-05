@@ -11,6 +11,34 @@ export interface Position {
   highlights: string[]
 }
 
+// A LinkedIn post about an award. The page shows a static card and only
+// loads LinkedIn's embed when the reader asks for it.
+export interface AwardPost {
+  author: string
+  relation: string
+  url: string
+  embedUrn: string // e.g. urn:li:ugcPost:…
+}
+
+// A video about an award. With an id the page loads TikTok's player in
+// place on request; without one it links out to the video.
+export interface AwardVideo {
+  platform: 'TikTok'
+  url: string
+  id?: string // numeric video id from the full tiktok.com/@…/video/<id> URL
+}
+
+export interface Award {
+  id: string // anchor on /resume, e.g. #hackathon
+  title: string
+  event: string
+  date?: string // YYYY-MM
+  image?: string
+  imageAlt?: string
+  post?: AwardPost
+  video?: AwardVideo
+}
+
 export interface Role {
   company: string
   location: string
@@ -18,6 +46,7 @@ export interface Role {
   city?: string
   workplace?: string
   summary: string
+  awards?: Award[]
   positions: Position[]
 }
 
