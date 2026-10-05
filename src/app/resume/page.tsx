@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { LinkedInPost } from "@/components/resume/LinkedInPost";
 import { ResumeDepth } from "@/components/resume/ResumeDepth";
 import { ResumeMap, type CityStop } from "@/components/resume/ResumeMap";
 import {
   countries,
+  formatMonth,
   formatRange,
   getResume,
   roleYears,
   yearsOfExperience,
+  type Award,
   type Resume,
   type Role,
 } from "@/lib/resume";
@@ -23,7 +27,62 @@ export const metadata: Metadata = {
   },
 };
 
-function RoleEntry({ role }: { role: Role }) {
+function AwardBadge({ award }: { award: Award }) {
+  return (
+    <a
+      className="resume-award-badge"
+      href={`#${award.id}`}
+      data-depth-link="full"
+    >
+      <svg viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M4 1h8v2h3v2a4 4 0 0 1-4 4 4 4 0 0 1-2 1.7V12h3v3H4v-3h3v-1.3A4 4 0 0 1 5 9a4 4 0 0 1-4-4V3h3zm-1.5 3.5v.5A2.5 2.5 0 0 0 4 7.3V4.5zm11 0H12v2.8A2.5 2.5 0 0 0 13.5 5z" />
+      </svg>
+      {award.title} · {award.event}
+      <span className="resume-award-date"> · {formatMonth(award.date)}</span>
+    </a>
+  );
+}
+
+// Full view only. Print swaps the photo and embed for a link back here.
+function AwardCard({ award, host }: { award: Award; host: string }) {
+  const { post } = award;
+  return (
+    <figure id={award.id} className="resume-award resume-full">
+      {award.image && (
+        <Image
+          src={award.image}
+          alt={award.imageAlt ?? ""}
+          width={960}
+          height={960}
+          loading="lazy"
+        />
+      )}
+      <figcaption>
+        <p className="resume-award-title">
+          {award.title}, {award.event}
+          <span className="resume-meta"> · {formatMonth(award.date)}</span>
+        </p>
+        {post && (
+          <>
+            <p className="resume-award-by">
+              Posted by {post.author} ({post.relation.toLowerCase()}) on{" "}
+              <a href={post.url}>LinkedIn</a>
+            </p>
+            <LinkedInPost
+              urn={post.embedUrn}
+              title={`${post.author} on LinkedIn: ${award.title}, ${award.event}`}
+            />
+          </>
+        )}
+        <p className="resume-award-print">
+          Photo and post: {host}/resume/#{award.id}
+        </p>
+      </figcaption>
+    </figure>
+  );
+}
+
+function RoleEntry({ role, host }: { role: Role; host: string }) {
   const [first, ...rest] = role.positions;
   const place = role.workplace
     ? `${role.location} · ${role.workplace}`
@@ -52,12 +111,18 @@ function RoleEntry({ role }: { role: Role }) {
           {formatRange(first.start, first.end)}
         </span>
       </div>
+      {role.awards?.map((award) => (
+        <AwardBadge key={award.id} award={award} />
+      ))}
       <p className="resume-summary">{role.summary}</p>
       <ul className="resume-full">
         {first.highlights.map((item) => (
           <li key={item}>{item}</li>
         ))}
       </ul>
+      {role.awards?.map((award) => (
+        <AwardCard key={award.id} award={award} host={host} />
+      ))}
       {rest.map((position) => (
         <div key={position.title + position.start} className="resume-full">
           <div className="resume-row resume-position">
@@ -223,14 +288,14 @@ export default function ResumePage() {
         <section className="resume-section" aria-labelledby="experience">
           <h2 id="experience">Experience</h2>
           {resume.experience.map((role) => (
-            <RoleEntry key={role.company} role={role} />
+            <RoleEntry key={role.company} role={role} host={websiteHost} />
           ))}
         </section>
 
         <section className="resume-section" aria-labelledby="side-projects">
           <h2 id="side-projects">Side project</h2>
           {resume.sideProjects.map((role) => (
-            <RoleEntry key={role.company} role={role} />
+            <RoleEntry key={role.company} role={role} host={websiteHost} />
           ))}
         </section>
 
