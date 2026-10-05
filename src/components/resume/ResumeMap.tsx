@@ -9,7 +9,10 @@ export interface CityStop extends MapCity {
 }
 
 interface ResumeMapProps {
-  dots: string;
+  inland: string;
+  coast: string;
+  // Grid spacing of the dots, in map units; the ocean grid matches it.
+  step: number;
   cities: CityStop[];
   route: string;
   defaultTitle: string;
@@ -38,7 +41,9 @@ function readSelection(el: Element | null): Selection | null {
 }
 
 export function ResumeMap({
-  dots,
+  inland,
+  coast,
+  step,
   cities,
   route,
   defaultTitle,
@@ -171,9 +176,26 @@ export function ResumeMap({
               />
               <stop offset="1" stopColor="var(--r-glow)" stopOpacity="0" />
             </radialGradient>
+            <pattern
+              id="resume-map-sea"
+              width={step}
+              height={step}
+              patternUnits="userSpaceOnUse"
+            >
+              <circle cx={step / 2} cy={step / 2} r={step * 0.31} />
+            </pattern>
           </defs>
           <g className="resume-map-camera" style={{ transform }}>
-            <path className="resume-map-dots" d={dots} />
+            <rect
+              className="resume-map-sea"
+              x={0}
+              y={2 * step}
+              width={MAP_WIDTH}
+              height={MAP_HEIGHT - 8 * step}
+              fill="url(#resume-map-sea)"
+            />
+            <path className="resume-map-dots" d={inland} />
+            <path className="resume-map-dots is-coast" d={coast} />
             <path className="resume-map-route" d={route} />
             {cities.map((c) => {
               const lit = c.id === city?.id;

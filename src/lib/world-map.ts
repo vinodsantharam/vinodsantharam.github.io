@@ -33,7 +33,13 @@ function formatCoords(lon: number, lat: number): string {
 }
 
 export interface WorldMap {
+  // Every land dot (the homepage strip draws these in one colour).
   dots: string
+  // The same dots split in two, so the resume map can light the coastline
+  // and keep the interior dim: the continents then read by their outline.
+  inland: string
+  coast: string
+  step: number
   cities: MapCity[]
 }
 
@@ -49,12 +55,30 @@ export function getWorldMap(): WorldMap {
     .translate([MAP_WIDTH / 2 + 10, MAP_HEIGHT / 2 + 50])
 
   const step = 8
+  const cols = Math.ceil(MAP_WIDTH / step)
+  const rows = Math.ceil(MAP_HEIGHT / step)
+  const isLand: boolean[][] = []
+  for (let r = 0; r < rows; r++) {
+    const row: boolean[] = []
+    for (let c = 0; c < cols; c++) {
+      const lonLat = projection.invert?.([step / 2 + c * step, step / 2 + r * step])
+      row.push(!!lonLat && lonLat[1] >= -56 && geoContains(land, lonLat))
+    }
+    isLand.push(row)
+  }
+  const at = (r: number, c: number) => isLand[r]?.[c] ?? false
+
   let dots = ''
-  for (let y = step / 2; y < MAP_HEIGHT; y += step) {
-    for (let x = step / 2; x < MAP_WIDTH; x += step) {
-      const lonLat = projection.invert?.([x, y])
-      if (!lonLat || lonLat[1] < -56) continue
-      if (geoContains(land, lonLat)) dots += `M${x} ${y}h0`
+  let inland = ''
+  let coast = ''
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      if (!isLand[r][c]) continue
+      const dot = `M${step / 2 + c * step} ${step / 2 + r * step}h0`
+      dots += dot
+      const edge = !at(r - 1, c) || !at(r + 1, c) || !at(r, c - 1) || !at(r, c + 1)
+      if (edge) coast += dot
+      else inland += dot
     }
   }
 
@@ -70,6 +94,6 @@ export function getWorldMap(): WorldMap {
     }
   })
 
-  cached = { dots, cities }
+  cached = { dots, inland, coast, step, cities }
   return cached
 }
