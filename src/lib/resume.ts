@@ -34,6 +34,8 @@ export interface Education {
 export interface Language {
   name: string
   level: string
+  // Shown in the facts tile at the top of the resume.
+  featured?: boolean
 }
 
 export interface Resume {

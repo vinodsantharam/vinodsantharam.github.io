@@ -123,9 +123,10 @@ function routePath(points: { x: number; y: number }[]): string {
 export default function ResumePage() {
   const resume = getResume();
   const places = countries(resume);
-  const fluent = resume.languages
-    .filter((l) => l.level === "Fluent")
+  const featured = resume.languages
+    .filter((l) => l.featured)
     .map((l) => l.name);
+  const otherLanguages = resume.languages.length - featured.length;
   const websiteHost = new URL(resume.contact.website).host;
 
   const world = getWorldMap();
@@ -202,7 +203,10 @@ export default function ResumePage() {
           </div>
           <div>
             <dt>{resume.languages.length} languages</dt>
-            <dd>fluent in {fluent.join(", ")}</dd>
+            <dd>
+              {featured.join(", ")}
+              {otherLanguages > 0 && ` and ${otherLanguages} more`}
+            </dd>
           </div>
         </dl>
 
