@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { LinkedInPost } from "@/components/resume/LinkedInPost";
+import { TikTokVideo } from "@/components/resume/TikTokVideo";
 import { ResumeDepth } from "@/components/resume/ResumeDepth";
 import { ResumeMap, type CityStop } from "@/components/resume/ResumeMap";
 import {
@@ -37,17 +38,28 @@ function AwardBadge({ award }: { award: Award }) {
       <svg viewBox="0 0 16 16" aria-hidden="true">
         <path d="M4 1h8v2h3v2a4 4 0 0 1-4 4 4 4 0 0 1-2 1.7V12h3v3H4v-3h3v-1.3A4 4 0 0 1 5 9a4 4 0 0 1-4-4V3h3zm-1.5 3.5v.5A2.5 2.5 0 0 0 4 7.3V4.5zm11 0H12v2.8A2.5 2.5 0 0 0 13.5 5z" />
       </svg>
-      {award.title} · {award.event}
-      <span className="resume-award-date"> · {formatMonth(award.date)}</span>
+      <span>
+        {award.title} · {award.event}
+        {award.date && ` · ${formatMonth(award.date)}`}
+      </span>
     </a>
   );
 }
 
-// Full view only. Print swaps the photo and embed for a link back here.
+// Full view only. Print swaps the photo, video and embed for a link back here.
 function AwardCard({ award, host }: { award: Award; host: string }) {
-  const { post } = award;
+  const { post, video } = award;
   return (
-    <figure id={award.id} className="resume-award resume-full">
+    <figure
+      id={award.id}
+      className={`resume-award resume-full${video ? " has-video" : ""}`}
+    >
+      {video && !award.image && (
+        <div className="resume-award-poster" aria-hidden="true">
+          <span className="play" />
+          <span className="label">{video.platform}</span>
+        </div>
+      )}
       {award.image && (
         <Image
           src={award.image}
@@ -60,7 +72,9 @@ function AwardCard({ award, host }: { award: Award; host: string }) {
       <figcaption>
         <p className="resume-award-title">
           {award.title}, {award.event}
-          <span className="resume-meta"> · {formatMonth(award.date)}</span>
+          {award.date && (
+            <span className="resume-meta"> · {formatMonth(award.date)}</span>
+          )}
         </p>
         {post && (
           <>
@@ -74,8 +88,25 @@ function AwardCard({ award, host }: { award: Award; host: string }) {
             />
           </>
         )}
+        {video && (
+          <>
+            <p className="resume-award-by">
+              A short video about it on {video.platform}
+            </p>
+            {video.id ? (
+              <TikTokVideo
+                id={video.id}
+                title={`${award.title}, ${award.event} on ${video.platform}`}
+              />
+            ) : (
+              <a className="resume-award-load" href={video.url}>
+                Watch on {video.platform} ↗
+              </a>
+            )}
+          </>
+        )}
         <p className="resume-award-print">
-          Photo and post: {host}/resume/#{award.id}
+          {video ? "Video" : "Photo and post"}: {host}/resume/#{award.id}
         </p>
       </figcaption>
     </figure>
@@ -111,9 +142,13 @@ function RoleEntry({ role, host }: { role: Role; host: string }) {
           {formatRange(first.start, first.end)}
         </span>
       </div>
-      {role.awards?.map((award) => (
-        <AwardBadge key={award.id} award={award} />
-      ))}
+      {role.awards && (
+        <div className="resume-award-badges">
+          {role.awards.map((award) => (
+            <AwardBadge key={award.id} award={award} />
+          ))}
+        </div>
+      )}
       <p className="resume-summary">{role.summary}</p>
       <ul className="resume-full">
         {first.highlights.map((item) => (

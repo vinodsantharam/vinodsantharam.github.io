@@ -20,14 +20,23 @@ export interface AwardPost {
   embedUrn: string // e.g. urn:li:ugcPost:…
 }
 
+// A video about an award. With an id the page loads TikTok's player in
+// place on request; without one it links out to the video.
+export interface AwardVideo {
+  platform: 'TikTok'
+  url: string
+  id?: string // numeric video id from the full tiktok.com/@…/video/<id> URL
+}
+
 export interface Award {
   id: string // anchor on /resume, e.g. #hackathon
   title: string
   event: string
-  date: string // YYYY-MM
+  date?: string // YYYY-MM
   image?: string
   imageAlt?: string
   post?: AwardPost
+  video?: AwardVideo
 }
 
 export interface Role {

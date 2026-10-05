@@ -433,12 +433,17 @@
   margin-top: 8px;
 }
 
+.resume-award-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-block: 2px;
+}
+
 .resume-award-badge {
-  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  margin-block: 2px;
   padding: 4px 11px 4px 9px;
   border: 1px solid var(--r-lamp);
   border-radius: 999px;
@@ -478,6 +483,45 @@
   scroll-margin-top: 80px;
 }
 
+.resume-award.has-video {
+  grid-template-columns: minmax(0, 96px) minmax(0, 1fr);
+}
+
+/* Stand-in frame for a video without a photo: a 9:16 night screen. */
+.resume-award-poster {
+  aspect-ratio: 9 / 16;
+  border-radius: 8px;
+  background: linear-gradient(160deg, var(--r-night-line), var(--r-night));
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.resume-award-poster .play {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--r-glow);
+  display: grid;
+  place-items: center;
+}
+
+.resume-award-poster .play::after {
+  content: "";
+  margin-left: 3px;
+  border-left: 10px solid var(--r-night);
+  border-block: 6px solid transparent;
+}
+
+.resume-award-poster .label {
+  position: absolute;
+  bottom: 8px;
+  font: 500 10px/1 var(--r-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--r-night-muted);
+}
+
 .resume-award img {
   width: 100%;
   height: auto;
@@ -512,6 +556,7 @@
 
 .resume-award-load {
   justify-self: start;
+  text-decoration: none;
   padding: 7px 12px;
   border: 1px solid var(--r-line);
   border-radius: 6px;
@@ -532,7 +577,8 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
-.resume-award:has(.resume-award-embed) img {
+.resume-award:has(.resume-award-embed) img,
+.resume-award:has(.resume-award-embed) .resume-award-poster {
   display: none;
 }
 
@@ -543,6 +589,13 @@
   border: 1px solid var(--r-line);
   border-radius: 8px;
   background: #ffffff;
+}
+
+.resume-award-embed.is-video {
+  max-width: 325px;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  background: #000000;
 }
 
 .resume-award-print {
@@ -648,6 +701,7 @@
   }
 
   .resume-award img,
+  .resume-award-poster,
   .resume-award-title,
   .resume-award-by,
   .resume-award-load,
