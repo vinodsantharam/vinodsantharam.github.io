@@ -35,6 +35,10 @@ export interface Award {
   date?: string // YYYY-MM
   image?: string
   imageAlt?: string
+  // A 16:9 picture such as a slide: shown full width above the caption.
+  imageWide?: boolean
+  // Why it was given, e.g. the points read out with the award.
+  reasons?: string[]
   post?: AwardPost
   video?: AwardVideo
 }

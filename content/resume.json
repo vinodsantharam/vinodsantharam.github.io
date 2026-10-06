@@ -149,6 +149,22 @@
       "location": "Montréal, Canada",
       "city": "montreal",
       "summary": "Redesigned a WPF application as XAML integrator and led its custom controls architecture.",
+      "awards": [
+        {
+          "id": "gsoft-star",
+          "title": "Department employee of the month",
+          "event": "GSOFT",
+          "image": "/gsoft-employee-of-the-month-2016.jpg",
+          "imageAlt": "Slide titled \"La 1ère étoile\" with Vinod's portrait and the four reasons for the award, in French",
+          "imageWide": true,
+          "reasons": [
+            "Helped create the WPF/XAML standards",
+            "Constant WPF/XAML mentoring",
+            "Exemplary professionalism",
+            "Took charge of provisioning on the GHouse project"
+          ]
+        }
+      ],
       "positions": [
         {
           "title": "Software Developer Engineer",
@@ -158,8 +174,7 @@
             "Built custom WPF controls in Microsoft Blend and led their architecture",
             "Wrote the XAML/MVVM coding guidance and trained developers on WPF",
             "Worked on the UI/UX revamp with the business analyst and the lead designer",
-            "Resolved performance issues, built development tools and reviewed code",
-            "Awarded best monthly department employee"
+            "Resolved performance issues, built development tools and reviewed code"
           ]
         }
       ]
