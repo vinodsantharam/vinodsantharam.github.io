@@ -400,6 +400,16 @@
   grid-template-columns: minmax(0, 96px) minmax(0, 1fr);
 }
 
+/* A slide or other 16:9 picture reads best full width, caption below. */
+.resume-award.is-wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.resume-award.is-wide img {
+  max-width: 560px;
+  aspect-ratio: 16 / 9;
+}
+
 /* Stand-in frame for a video without a photo: a 9:16 night screen. */
 .resume-award-poster {
   aspect-ratio: 9 / 16;
@@ -463,6 +473,13 @@
   color: var(--r-muted);
 }
 
+.resume-award-reasons {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13.5px;
+  color: var(--r-muted);
+}
+
 .resume-award-by a {
   color: var(--r-accent);
 }
@@ -519,7 +536,7 @@
   .resume-award {
     grid-template-columns: minmax(0, 1fr);
   }
-  .resume-award img {
+  .resume-award:not(.is-wide) img {
     max-width: 260px;
   }
 }
@@ -617,6 +634,7 @@
   .resume-award-poster,
   .resume-award-title,
   .resume-award-by,
+  .resume-award-reasons,
   .resume-award-load,
   .resume-award-embed {
     display: none;

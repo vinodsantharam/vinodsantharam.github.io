@@ -47,12 +47,10 @@ function AwardBadge({ award }: { award: Award }) {
 
 // Full view only. Print swaps the photo, video and embed for a link back here.
 function AwardCard({ award, host }: { award: Award; host: string }) {
-  const { post, video } = award;
+  const { post, video, reasons } = award;
+  const shape = video ? " has-video" : award.imageWide ? " is-wide" : "";
   return (
-    <figure
-      id={award.id}
-      className={`resume-award resume-full${video ? " has-video" : ""}`}
-    >
+    <figure id={award.id} className={`resume-award resume-full${shape}`}>
       {video && !award.image && (
         <div className="resume-award-poster" aria-hidden="true">
           <span className="play" />
@@ -63,8 +61,8 @@ function AwardCard({ award, host }: { award: Award; host: string }) {
         <Image
           src={award.image}
           alt={award.imageAlt ?? ""}
-          width={960}
-          height={960}
+          width={award.imageWide ? 1600 : 960}
+          height={award.imageWide ? 900 : 960}
           loading="lazy"
         />
       )}
@@ -75,6 +73,13 @@ function AwardCard({ award, host }: { award: Award; host: string }) {
             <span className="resume-meta"> · {formatMonth(award.date)}</span>
           )}
         </p>
+        {reasons && (
+          <ul className="resume-award-reasons">
+            {reasons.map((reason) => (
+              <li key={reason}>{reason}</li>
+            ))}
+          </ul>
+        )}
         {post && (
           <>
             <p className="resume-award-by">
@@ -105,7 +110,7 @@ function AwardCard({ award, host }: { award: Award; host: string }) {
           </>
         )}
         <p className="resume-award-print">
-          {video ? "Video" : "Photo and post"}: {host}/resume/#{award.id}
+          {video ? "Video" : post ? "Photo and post" : "Photo"}: {host}/resume/#{award.id}
         </p>
       </figcaption>
     </figure>
