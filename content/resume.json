@@ -38,7 +38,9 @@
           "event": "2C2P",
           "video": {
             "platform": "TikTok",
-            "url": "https://vt.tiktok.com/ZSbQpeLEg/"
+            "url": "https://vt.tiktok.com/ZSbQpeLEg/",
+            "poster": "/2c2p-core-value-award.jpg",
+            "posterAlt": "2C2P Core Value Award trophies lined up in front of a window over Bangkok"
           }
         }
       ],

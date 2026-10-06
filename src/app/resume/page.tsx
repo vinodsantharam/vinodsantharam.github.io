@@ -52,9 +52,24 @@ function AwardCard({ award, host }: { award: Award; host: string }) {
   return (
     <figure id={award.id} className={`resume-award resume-full${shape}`}>
       {video && !award.image && (
-        <div className="resume-award-poster" aria-hidden="true">
-          <span className="play" />
-          <span className="label">{video.platform}</span>
+        <div
+          className={`resume-award-poster${video.poster ? " has-still" : ""}`}
+        >
+          {video.poster && (
+            <Image
+              src={video.poster}
+              alt={video.posterAlt ?? ""}
+              width={340}
+              height={453}
+              loading="lazy"
+            />
+          )}
+          <span className="play" aria-hidden="true" />
+          {!video.poster && (
+            <span className="label" aria-hidden="true">
+              {video.platform}
+            </span>
+          )}
         </div>
       )}
       {award.image && (

@@ -26,6 +26,8 @@ export interface AwardVideo {
   platform: 'TikTok'
   url: string
   id?: string // numeric video id from the full tiktok.com/@…/video/<id> URL
+  poster?: string // 3:4 still shown before the video plays
+  posterAlt?: string
 }
 
 export interface Award {
