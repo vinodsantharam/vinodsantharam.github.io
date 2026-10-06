@@ -33,10 +33,8 @@ function formatCoords(lon: number, lat: number): string {
 }
 
 export interface WorldMap {
-  // Every land dot (the homepage strip draws these in one colour).
-  dots: string
-  // The same dots split in two, so the resume map can light the coastline
-  // and keep the interior dim: the continents then read by their outline.
+  // Land dots split in two, so the map can light the coastline and keep
+  // the interior dim: the continents then read by their outline.
   inland: string
   coast: string
   step: number
@@ -68,14 +66,12 @@ export function getWorldMap(): WorldMap {
   }
   const at = (r: number, c: number) => isLand[r]?.[c] ?? false
 
-  let dots = ''
   let inland = ''
   let coast = ''
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
       if (!isLand[r][c]) continue
       const dot = `M${step / 2 + c * step} ${step / 2 + r * step}h0`
-      dots += dot
       const edge = !at(r - 1, c) || !at(r + 1, c) || !at(r, c - 1) || !at(r, c + 1)
       if (edge) coast += dot
       else inland += dot
@@ -94,6 +90,6 @@ export function getWorldMap(): WorldMap {
     }
   })
 
-  cached = { dots, inland, coast, step, cities }
+  cached = { inland, coast, step, cities }
   return cached
 }

@@ -1,69 +1,38 @@
-import { getWorldMap } from "@/lib/world-map";
+import { WorldMapSvg } from "@/components/WorldMapSvg";
+import { getResumeMap } from "@/lib/resume-map";
+import { getResume } from "@/lib/resume";
 
-interface MapStripProps {
-  current: string;
-  previous: string[];
-}
-
-// Static night map for the homepage: the current city glows, past cities
-// are dimly lit. Rendered at build time; no client JavaScript.
-export function MapStrip({ current, previous }: MapStripProps) {
-  const { dots, cities } = getWorldMap();
-  const now = cities.find((c) => c.id === current);
-  const past = cities.filter((c) => previous.includes(c.id));
+// Static night map for the homepage, drawn like the resume map: the current
+// city glows and pulses, past cities are dimly lit, and the dotted route
+// joins them. Rendered at build time; no client JavaScript.
+export function MapStrip() {
+  const map = getResumeMap(getResume());
+  const now = map.stops.find((c) => c.id === map.current);
+  // Latest first, each city once (Montréal was home twice).
+  const before = [...new Set(map.journey.slice(0, -1).reverse())];
 
   return (
-    <figure className="m-0 rounded-xl bg-night p-3.5 grid gap-2 min-w-0">
-      <svg
-        viewBox="240 80 620 240"
-        className="block w-full h-auto"
-        role="img"
-        aria-label={`Map: now in ${now?.name}, previously ${past
-          .map((c) => c.name)
-          .join(", ")}`}
-      >
-        <defs>
-          <radialGradient id="map-strip-glow">
-            <stop offset="0" stopColor="var(--color-lamp)" stopOpacity="0.8" />
-            <stop
-              offset="0.4"
-              stopColor="var(--color-lamp)"
-              stopOpacity="0.2"
-            />
-            <stop offset="1" stopColor="var(--color-lamp)" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <path
-          d={dots}
-          fill="none"
-          stroke="var(--color-dot)"
-          strokeWidth={2.2}
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
+    <figure className="m-0 rounded-xl bg-night p-3.5 grid gap-2.5 min-w-0">
+      {/* Cropped to the inhabited latitudes, like the resume map on phones. */}
+      <div className="overflow-hidden rounded-lg border border-night-line">
+        <WorldMapSvg
+          inland={map.inland}
+          coast={map.coast}
+          step={map.step}
+          cities={map.stops}
+          route={map.route}
+          label={`Map: now in ${now?.name}, previously ${before.join(", ")}`}
+          litId={map.current}
+          viewBox="0 18 1000 350"
+          idPrefix="home-map"
         />
-        {past.map((c) => (
-          <circle
-            key={c.id}
-            cx={c.x}
-            cy={c.y}
-            r={16}
-            fill="url(#map-strip-glow)"
-            opacity={0.35}
-          />
-        ))}
-        {now && (
-          <>
-            <circle cx={now.x} cy={now.y} r={30} fill="url(#map-strip-glow)" />
-            <circle cx={now.x} cy={now.y} r={2.4} fill="var(--color-lamp)" />
-          </>
-        )}
-      </svg>
-      <figcaption className="flex flex-wrap justify-between gap-2 font-mono text-[11px] text-night-muted">
+      </div>
+      <figcaption className="flex flex-wrap justify-between gap-x-3 gap-y-1 font-mono text-[11px] text-night-muted">
         <span>
           <b className="font-medium text-night-foreground">Now</b>{" "}
           {now?.name.split(",")[0]}
         </span>
-        <span>Before: {past.map((c) => c.name.split(",")[0]).join(" · ")}</span>
+        <span>Before: {before.join(" · ")}</span>
       </figcaption>
     </figure>
   );
