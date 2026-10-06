@@ -87,10 +87,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <MapStrip
-          current="bangkok"
-          previous={["montreal", "basel", "strasbourg"]}
-        />
+        <MapStrip />
       </section>
 
       <section className="grid gap-4" aria-labelledby="latest-writing">

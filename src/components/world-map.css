@@ -1,0 +1,98 @@
+/* Night dot-matrix map drawn by WorldMapSvg, on /resume and the homepage.
+   Colours are the same in light and dark themes: the map always sits on a
+   night panel. */
+
+.world-map {
+  --map-dot: #323c4d;
+  --map-coast: #9aa6bb;
+  --map-sea: #121822;
+  --map-glow: #f2b45a;
+  --map-route: #7d8697;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.world-map-camera {
+  transform-origin: 0 0;
+  transition: transform 1.1s cubic-bezier(0.3, 0.1, 0.2, 1);
+}
+
+/* Dots scale with the map (62% of the 8-unit grid), so they stay distinct
+   pixels at phone width instead of shrinking to specks. */
+.world-map-dots {
+  fill: none;
+  stroke: var(--map-dot);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.world-map-dots.is-coast {
+  stroke: var(--map-coast);
+}
+
+.world-map-sea-dot {
+  fill: var(--map-sea);
+}
+
+.world-map-route {
+  fill: none;
+  stroke: var(--map-route);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+  opacity: 0.45;
+  vector-effect: non-scaling-stroke;
+}
+
+.world-map-city .halo {
+  opacity: 0.18;
+  transition: opacity 0.9s ease;
+}
+
+.world-map-city .core {
+  fill: var(--map-glow);
+  opacity: 0.55;
+  transition: opacity 0.6s ease;
+}
+
+.world-map-city .ring {
+  fill: none;
+  stroke: var(--map-glow);
+  stroke-width: 1;
+  opacity: 0;
+  vector-effect: non-scaling-stroke;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.world-map-city.is-lit .halo,
+.world-map-city.is-lit .core {
+  opacity: 1;
+}
+
+.world-map-city.is-lit .ring {
+  animation: world-map-ring 2.8s ease-out infinite;
+}
+
+@keyframes world-map-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .world-map-camera,
+  .world-map-city .halo,
+  .world-map-city .core {
+    transition: none;
+  }
+  .world-map-city.is-lit .ring {
+    animation: none;
+  }
+}

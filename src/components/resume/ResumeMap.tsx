@@ -1,12 +1,9 @@
 "use client";
 
 import * as React from "react";
-import type { MapCity } from "@/lib/world-map";
+import { WorldMapSvg } from "@/components/WorldMapSvg";
+import type { CityStop } from "@/lib/resume-map";
 import { MAP_HEIGHT, MAP_WIDTH } from "@/lib/world-map-size";
-
-export interface CityStop extends MapCity {
-  years: string;
-}
 
 interface ResumeMapProps {
   inland: string;
@@ -159,65 +156,20 @@ export function ResumeMap({
         <b>{city ? city.years : ""}</b>
       </div>
       <div className="resume-map-box">
-        <svg
-          viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
-          role="img"
-          aria-label={`World map of the cities Vinod has worked in: ${cities
+        <WorldMapSvg
+          inland={inland}
+          coast={coast}
+          step={step}
+          cities={cities}
+          route={route}
+          label={`World map of the cities Vinod has worked in: ${cities
             .map((c) => c.name)
             .join(", ")}`}
-        >
-          <defs>
-            <radialGradient id="resume-map-glow">
-              <stop offset="0" stopColor="var(--r-glow)" stopOpacity="0.75" />
-              <stop
-                offset="0.35"
-                stopColor="var(--r-glow)"
-                stopOpacity="0.22"
-              />
-              <stop offset="1" stopColor="var(--r-glow)" stopOpacity="0" />
-            </radialGradient>
-            <pattern
-              id="resume-map-sea"
-              width={step}
-              height={step}
-              patternUnits="userSpaceOnUse"
-            >
-              <circle cx={step / 2} cy={step / 2} r={step * 0.31} />
-            </pattern>
-          </defs>
-          <g className="resume-map-camera" style={{ transform }}>
-            <rect
-              className="resume-map-sea"
-              x={0}
-              y={2 * step}
-              width={MAP_WIDTH}
-              height={MAP_HEIGHT - 8 * step}
-              fill="url(#resume-map-sea)"
-            />
-            <path className="resume-map-dots" d={inland} />
-            <path className="resume-map-dots is-coast" d={coast} />
-            <path className="resume-map-route" d={route} />
-            {cities.map((c) => {
-              const lit = c.id === city?.id;
-              return (
-                <g
-                  key={c.id}
-                  className={lit ? "resume-map-city is-lit" : "resume-map-city"}
-                >
-                  <circle
-                    className="halo"
-                    cx={c.x}
-                    cy={c.y}
-                    r={lit && active?.remote ? 40 : 26}
-                    fill="url(#resume-map-glow)"
-                  />
-                  <circle className="ring" cx={c.x} cy={c.y} r={6} />
-                  <circle className="core" cx={c.x} cy={c.y} r={2.2} />
-                </g>
-              );
-            })}
-          </g>
-        </svg>
+          litId={city?.id}
+          remote={active?.remote}
+          transform={transform}
+          idPrefix="resume-map"
+        />
       </div>
       <div className="resume-map-caption" aria-live="polite">
         <div className="place">{title}</div>
