@@ -245,6 +245,19 @@
   color: var(--r-ink);
 }
 
+.resume-links {
+  margin: 4px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 18px;
+  font: 400 12px/1.6 var(--r-mono);
+}
+
+.resume-links a {
+  color: var(--r-accent);
+  text-underline-offset: 3px;
+}
+
 .resume-download {
   margin: -12px 0 0;
   font: 400 12px/1.6 var(--r-mono);
@@ -673,8 +686,13 @@
     font-size: 20pt;
   }
 
-  .resume-contact a {
+  .resume-contact a,
+  .resume-links a {
     text-decoration: none;
+  }
+
+  .resume-links {
+    font-size: 8.5pt;
   }
 
   .resume-role {

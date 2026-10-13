@@ -243,6 +243,36 @@
   ],
   "sideProjects": [
     {
+      "company": "Redis Pane",
+      "location": "Open source",
+      "summary": "An open-source terminal UI that makes digging into Redis data easy, where redis-cli only runs commands: browse the keyspace, open a key and watch it change live, edit it safely. Designed the product and built it with AI coding agents.",
+      "links": [
+        {
+          "label": "github.com/redis-pane/redis-pane",
+          "url": "https://github.com/redis-pane/redis-pane"
+        },
+        {
+          "label": "redis-pane.github.io/redis-pane",
+          "url": "https://redis-pane.github.io/redis-pane/"
+        }
+      ],
+      "positions": [
+        {
+          "title": "Creator & Maintainer",
+          "start": "2026-09",
+          "end": null,
+          "highlights": [
+            "Designed the experience around exploring data: keys stream in and stay usable while they load, a tree or flat view with filter and sort, and a dedicated view for each Redis type",
+            "Kept it keyboard-first and at home in any terminal: works over SSH, fits down to 80×24, and brings back your layout and selected key on relaunch",
+            "Set the safety rules: every write shows its exact command before it runs, and prod targets open read-only",
+            "Specified live updates pushed by the server, with a visible warning if they ever stop",
+            "Directed the build with Claude Code, with CI, a million-key performance test and beta releases keeping it honest",
+            "Wrote the documentation site and the guides for beta testers"
+          ]
+        }
+      ]
+    },
+    {
       "company": "Di Vini",
       "location": "Remote",
       "summary": "A wine tasting-notes app in React Native, published on the App Store and Play Store.",

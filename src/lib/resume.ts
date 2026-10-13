@@ -45,6 +45,11 @@ export interface Award {
   video?: AwardVideo
 }
 
+export interface RoleLink {
+  label: string // shown as is, so a printed page still says where to go
+  url: string
+}
+
 export interface Role {
   company: string
   location: string
@@ -53,6 +58,7 @@ export interface Role {
   workplace?: string
   summary: string
   awards?: Award[]
+  links?: RoleLink[]
   positions: Position[]
 }
 
