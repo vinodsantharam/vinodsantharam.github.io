@@ -258,6 +258,30 @@
   text-underline-offset: 3px;
 }
 
+.resume-links .resume-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: -10px;
+  padding: 0 8px;
+  border: 1px solid var(--r-line);
+  border-radius: 999px;
+  color: var(--r-muted);
+  font: 500 11.5px/1.6 var(--r-mono);
+  text-decoration: none;
+}
+
+.resume-stars svg {
+  width: 11px;
+  height: 11px;
+  fill: var(--r-lamp);
+}
+
+.resume-links .resume-stars:hover {
+  border-color: var(--r-lamp);
+  color: var(--r-ink);
+}
+
 .resume-download {
   margin: -12px 0 0;
   font: 400 12px/1.6 var(--r-mono);
@@ -646,7 +670,8 @@
   }
 
   .resume-toggle,
-  .resume-download {
+  .resume-download,
+  .resume-links .resume-stars {
     display: none;
   }
 

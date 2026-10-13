@@ -1,5 +1,7 @@
+import * as React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import { GitHubStars } from "@/components/resume/GitHubStars";
 import { LinkedInPost } from "@/components/resume/LinkedInPost";
 import { TikTokVideo } from "@/components/resume/TikTokVideo";
 import { ResumeDepth } from "@/components/resume/ResumeDepth";
@@ -14,6 +16,7 @@ import {
   type Award,
   type Role,
 } from "@/lib/resume";
+import { getStarCount } from "@/lib/github";
 import { getResumeMap } from "@/lib/resume-map";
 import { siteConfig } from "@/lib/site";
 import "./resume.css";
@@ -132,7 +135,15 @@ function AwardCard({ award, host }: { award: Award; host: string }) {
   );
 }
 
-function RoleEntry({ role, host }: { role: Role; host: string }) {
+function RoleEntry({
+  role,
+  host,
+  stars = {},
+}: {
+  role: Role;
+  host: string;
+  stars?: Record<string, number | null>;
+}) {
   const [first, ...rest] = role.positions;
   const place = role.workplace
     ? `${role.location} · ${role.workplace}`
@@ -172,9 +183,15 @@ function RoleEntry({ role, host }: { role: Role; host: string }) {
       {role.links && (
         <p className="resume-links">
           {role.links.map((link) => (
-            <a key={link.url} href={link.url}>
-              {link.label}
-            </a>
+            <React.Fragment key={link.url}>
+              <a href={link.url}>{link.label}</a>
+              {link.repo && (
+                <GitHubStars
+                  repo={link.repo}
+                  initial={stars[link.repo] ?? null}
+                />
+              )}
+            </React.Fragment>
           ))}
         </p>
       )}
@@ -205,8 +222,16 @@ function RoleEntry({ role, host }: { role: Role; host: string }) {
   );
 }
 
-export default function ResumePage() {
+export default async function ResumePage() {
   const resume = getResume();
+  const repos = resume.sideProjects.flatMap((role) =>
+    (role.links ?? []).flatMap((link) => (link.repo ? [link.repo] : [])),
+  );
+  const stars = Object.fromEntries(
+    await Promise.all(
+      repos.map(async (repo) => [repo, await getStarCount(repo)] as const),
+    ),
+  );
   const places = countries(resume);
   const featured = resume.languages
     .filter((l) => l.featured)
@@ -301,7 +326,12 @@ export default function ResumePage() {
         <section className="resume-section" aria-labelledby="side-projects">
           <h2 id="side-projects">Side projects</h2>
           {resume.sideProjects.map((role) => (
-            <RoleEntry key={role.company} role={role} host={websiteHost} />
+            <RoleEntry
+              key={role.company}
+              role={role}
+              host={websiteHost}
+              stars={stars}
+            />
           ))}
         </section>
 
