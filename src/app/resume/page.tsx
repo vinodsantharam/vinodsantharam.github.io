@@ -169,6 +169,15 @@ function RoleEntry({ role, host }: { role: Role; host: string }) {
         </div>
       )}
       <p className="resume-summary">{role.summary}</p>
+      {role.links && (
+        <p className="resume-links">
+          {role.links.map((link) => (
+            <a key={link.url} href={link.url}>
+              {link.label}
+            </a>
+          ))}
+        </p>
+      )}
       <ul className="resume-full">
         {first.highlights.map((item) => (
           <li key={item}>{item}</li>
@@ -290,7 +299,7 @@ export default function ResumePage() {
         </section>
 
         <section className="resume-section" aria-labelledby="side-projects">
-          <h2 id="side-projects">Side project</h2>
+          <h2 id="side-projects">Side projects</h2>
           {resume.sideProjects.map((role) => (
             <RoleEntry key={role.company} role={role} host={websiteHost} />
           ))}
