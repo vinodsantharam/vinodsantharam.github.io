@@ -48,6 +48,8 @@ export interface Award {
 export interface RoleLink {
   label: string // shown as is, so a printed page still says where to go
   url: string
+  // owner/name: shows the repo's GitHub star count beside the link.
+  repo?: string
 }
 
 export interface Role {

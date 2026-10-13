@@ -249,7 +249,8 @@
       "links": [
         {
           "label": "github.com/redis-pane/redis-pane",
-          "url": "https://github.com/redis-pane/redis-pane"
+          "url": "https://github.com/redis-pane/redis-pane",
+          "repo": "redis-pane/redis-pane"
         },
         {
           "label": "redis-pane.github.io/redis-pane",
