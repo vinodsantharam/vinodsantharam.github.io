@@ -68,14 +68,16 @@ export function ResumeDepth({ header, aside, children }: ResumeDepthProps) {
               aria-pressed={depth === "brief"}
               onClick={() => setDepth("brief")}
             >
-              30-second view
+              <span className="label">30-second view</span>
+              <span className="hint">Roles, skills and highlights</span>
             </button>
             <button
               type="button"
               aria-pressed={depth === "full"}
               onClick={() => setDepth("full")}
             >
-              Full story
+              <span className="label">Full story</span>
+              <span className="hint">Every role, project and award</span>
             </button>
           </div>
         </div>

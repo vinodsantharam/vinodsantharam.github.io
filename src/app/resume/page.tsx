@@ -242,9 +242,36 @@ export default async function ResumePage() {
   const map = getResumeMap(resume);
 
   const header = (
-    <div>
-      <h1 className="resume-name">{resume.name}</h1>
-      <p className="resume-tagline">{resume.tagline}</p>
+    <div className="resume-head">
+      <div>
+        <h1 className="resume-name">{resume.name}</h1>
+        <p className="resume-tagline">{resume.tagline}</p>
+      </div>
+      {/* Generated from this page's print layout on every deploy
+          (scripts/build-resume-pdf.mjs). Always the full story. */}
+      <a
+        className="resume-download"
+        href="/vinod_santharam_resume.pdf"
+        download
+        aria-label="Download the full resume as PDF"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 4v11" />
+          <path d="M7 10l5 5 5-5" />
+          <path d="M5 20h14" />
+        </svg>
+        PDF
+      </a>
     </div>
   );
 
@@ -282,13 +309,6 @@ export default async function ResumePage() {
             </a>
           </li>
         </ul>
-
-        {/* Generated from this page's print layout on every deploy
-            (scripts/build-resume-pdf.mjs). */}
-        <p className="resume-download">
-          Download PDF: <a href="/vinod_santharam_resume.pdf">30-second view</a>{" "}
-          · <a href="/vinod_santharam_resume_full.pdf">full story</a>
-        </p>
 
         <dl className="resume-facts">
           <div>
