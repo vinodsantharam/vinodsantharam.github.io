@@ -4,9 +4,9 @@
 export const siteConfig = {
   name: "Vinod Santharam",
   url: "https://vinodsantharam.github.io",
-  title: "Vinod Santharam — Team Lead, Frontend Engineer & UX Product Design",
+  title: "Vinod Santharam — Staff Engineer, Frontend & UX Product Design",
   description:
-    "Personal website of Vinod Santharam — Team Lead, Frontend Engineer and UX Product Design specialist. Writing on software development, AI-assisted coding, UX, and the books that shape my thinking.",
+    "Personal website of Vinod Santharam — Staff Engineer, frontend and UX Product Design specialist. Writing on software development, AI-assisted coding, UX, and the books that shape my thinking.",
   author: "Vinod Santharam",
   locale: "en_US",
 } as const;

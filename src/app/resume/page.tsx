@@ -24,7 +24,7 @@ import "./resume.css";
 export const metadata: Metadata = {
   title: "Resume",
   description:
-    "Resume of Vinod Santharam: team lead and frontend engineer with a UX focus. Experience across Thailand, Canada, Switzerland and France.",
+    "Resume of Vinod Santharam: staff engineer with a frontend and UX focus. Experience across Thailand, Canada, Switzerland and France.",
   alternates: {
     canonical: "/resume/",
   },

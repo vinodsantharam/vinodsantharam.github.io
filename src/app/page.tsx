@@ -38,7 +38,7 @@ export default function Home() {
         "@type": "Person",
         name: siteConfig.author,
         url: siteConfig.url,
-        jobTitle: "Team Lead, Frontend Engineer & UX Product Design specialist",
+        jobTitle: "Staff Engineer, Frontend & UX Product Design specialist",
         description: siteConfig.description,
       },
       {
@@ -67,7 +67,7 @@ export default function Home() {
             I design the experience, then I build it.
           </h1>
           <p className="mt-4 text-muted-foreground max-w-[60ch] leading-relaxed">
-            Team lead and frontend engineer in Bangkok. {years} years of
+            Staff engineer in Bangkok, working across frontend and UX. {years} years of
             shipping products across payments, SaaS and collaboration tools, in
             France, Switzerland, Canada and Thailand. I write about UX,
             AI-assisted coding and how teams actually work.
