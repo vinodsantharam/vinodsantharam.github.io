@@ -9,7 +9,9 @@ export function MapStrip() {
   const map = getResumeMap(getResume());
   const now = map.stops.find((c) => c.id === map.current);
   // Latest first, each city once (Montréal was home twice).
-  const before = [...new Set(map.journey.slice(0, -1).reverse())];
+  const before = [...new Set(map.journey.slice(0, -1).reverse())].map((c) =>
+    c === map.home?.name.split(",")[0] ? `born in ${c}` : c,
+  );
 
   return (
     <figure className="m-0 rounded-xl bg-night p-3.5 grid gap-2.5 min-w-0">
@@ -21,6 +23,7 @@ export function MapStrip() {
           step={map.step}
           cities={map.stops}
           route={map.route}
+          homeId={map.home?.id}
           label={`Map: now in ${now?.name}, previously ${before.join(", ")}`}
           litId={map.current}
           viewBox="0 18 1000 350"

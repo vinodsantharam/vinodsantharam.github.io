@@ -29,7 +29,8 @@ function formatDate(date: string) {
 export default function Home() {
   const posts = getAllMarkdownPosts("blog").slice(0, 3);
   const shelf = books.slice(0, 10);
-  const years = yearsOfExperience(getResume());
+  const resume = getResume();
+  const years = yearsOfExperience(resume);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -39,6 +40,8 @@ export default function Home() {
         name: siteConfig.author,
         url: siteConfig.url,
         jobTitle: "Staff Engineer, Frontend & UX Product Design specialist",
+        nationality: { "@type": "Country", name: "France" },
+        birthPlace: resume.birthplace.name,
         description: siteConfig.description,
       },
       {
@@ -64,10 +67,24 @@ export default function Home() {
       <section className="grid md:grid-cols-[1.15fr_1fr] gap-10 items-center">
         <div className="min-w-0">
           <h1 className="font-mono font-semibold tracking-tight text-[clamp(1.6rem,3vw,2.1rem)] leading-tight text-balance">
-            I design the experience, then I build it.
+            <span className="relative inline-block text-primary" lang="fr">
+              Bonjour
+              {/* Gloss for readers who don't speak French. */}
+              <span
+                aria-hidden="true"
+                className="absolute left-0 -top-4 font-normal text-[11px] tracking-widest text-muted-foreground"
+              >
+                hello
+              </span>
+            </span>
+            , I&rsquo;m Vinod.
+            <span className="block mt-1 text-[0.8em] text-muted-foreground">
+              I design the experience, then I build it.
+            </span>
           </h1>
           <p className="mt-4 text-muted-foreground max-w-[60ch] leading-relaxed">
-            Staff engineer in Bangkok, working across frontend and UX. {years} years of
+            Staff engineer in Bangkok, working across frontend and UX. French,
+            born in Strasbourg. {years} years of
             shipping products across payments, SaaS and collaboration tools, in
             France, Switzerland, Canada and Thailand. I write about UX,
             AI-assisted coding and how teams actually work.
