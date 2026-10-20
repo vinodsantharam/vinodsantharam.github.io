@@ -1,7 +1,7 @@
 {
   "name": "Vinod Santharam",
-  "headline": "Team Lead · Frontend Engineer · UX",
-  "tagline": "Team lead and frontend engineer who designs the UX before writing the code.",
+  "headline": "Staff Engineer · Frontend · UX",
+  "tagline": "Staff engineer who designs the UX before writing the code.",
   "location": "Bangkok, Thailand",
   "summary": "Software engineer building products since 2010, combining strong technical expertise with mentoring and team-building. Deeply passionate about product design and user experience, I strive to bridge the gap between engineering and customer value.",
   "contact": {
@@ -16,7 +16,7 @@
       "location": "Bangkok, Thailand",
       "city": "bangkok",
       "workplace": "On-site",
-      "summary": "Leads a greenfield product, from Figma UX flows to a Next.js monorepo and a shared component registry.",
+      "summary": "Architect of 2C2P's new high-traffic payment page, from React SPA to Next.js on AWS.",
       "awards": [
         {
           "id": "hackathon",
@@ -46,11 +46,25 @@
       ],
       "positions": [
         {
-          "title": "Team Lead",
-          "start": "2025-06",
+          "title": "Staff Engineer",
+          "start": "2026-03",
           "end": null,
           "highlights": [
-            "Led a greenfield project and the team's agile process",
+            "Designed the architecture of the new payment page (high traffic, merchant customization, many channels) and led its move from a React SPA to Next.js, delivered in phases",
+            "Designed the AWS topology with the head of infrastructure: cost estimation, custom headers, redirection rules",
+            "Shaped the product with Marketing and a UX vendor, prototyping alternative solutions with v0",
+            "Designed the Redis caching strategy to take load off the backend",
+            "Defined rate-limiting policies with the AppSec and SOC teams",
+            "Shipped through canary releases, with monitoring and analytics built in: OpenTelemetry, PostHog, Core Web Vitals, OpenSearch Dashboards",
+            "Ported the solution to another team's payment page, following its delivery and mentoring and training its developers"
+          ]
+        },
+        {
+          "title": "Team Lead",
+          "start": "2025-06",
+          "end": "2026-03",
+          "highlights": [
+            "Led the greenfield merchant onboarding product and the team's agile process",
             "Designed the UX flows in Figma",
             "Ran Next.js monorepo projects on Turborepo",
             "Built a React UI component library (Tailwind CSS, shadcn/ui) and its publishing pipeline as a registry",
@@ -60,11 +74,10 @@
         {
           "title": "Software Engineer",
           "start": "2024-07",
-          "end": "2025-08",
+          "end": "2025-05",
           "highlights": [
-            "Led full development of a high-traffic payment page on Next.js and Tailwind: system design, cloud topology, cost optimisation and Core Web Vitals monitoring",
-            "Drove a greenfield onboarding roadmap, agile delivery and alignment with Product and Design",
-            "Defined UX strategy through Figma flows, influencing Product and Business stakeholders"
+            "Built features for two Angular SPA products: the payment page and the admin portal",
+            "Enhanced both products and paid down their technical debt"
           ]
         }
       ]
@@ -325,6 +338,9 @@
     "Node.js",
     ".NET / C#",
     "Azure",
+    "AWS",
+    "Redis",
+    "Observability (OpenTelemetry, PostHog)",
     "Figma",
     "UX design",
     "Team leadership",
