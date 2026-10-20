@@ -11,7 +11,7 @@ Personal website (vinodsantharam.github.io) built with **Next.js 16 App Router**
 ```bash
 npm run dev      # Local dev server (next dev)
 npm run build    # Static export -> ./out  (uses --webpack; `npm run export` is identical)
-npm run pdf      # After build: print /resume to out/vinod_santharam_resume{,_full}.pdf (Playwright)
+npm run pdf      # After build: print the full-story /resume to out/vinod_santharam_resume{,_full}.pdf (Playwright)
 npm run lint     # eslint via next lint
 npm start        # Serve a production build (rarely needed; site is static)
 ```

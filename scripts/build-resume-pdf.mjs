@@ -4,7 +4,7 @@
 // In CI, install the browser first: npx playwright install --with-deps chromium
 // Locally you can point at an existing Chromium with CHROMIUM_PATH.
 import { createServer } from "node:http";
-import { readFile, stat } from "node:fs/promises";
+import { readFile, stat, writeFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { chromium } from "playwright";
 
@@ -64,17 +64,15 @@ try {
   });
   await page.evaluate(() => document.fonts.ready);
 
-  const outputs = [
-    { depth: "30-second view", file: "vinod_santharam_resume.pdf" },
-    { depth: "Full story", file: "vinod_santharam_resume_full.pdf" },
-  ];
-  for (const { depth, file } of outputs) {
-    await page.getByRole("button", { name: depth }).click();
-    await page.pdf({
-      path: join(OUT, file),
-      format: "A4",
-      preferCSSPageSize: true,
-    });
+  // One download, always the full story. The _full name was linked
+  // before; it keeps working as a copy.
+  await page.getByRole("button", { name: /^Full story/ }).click();
+  const pdf = await page.pdf({ format: "A4", preferCSSPageSize: true });
+  for (const file of [
+    "vinod_santharam_resume.pdf",
+    "vinod_santharam_resume_full.pdf",
+  ]) {
+    await writeFile(join(OUT, file), pdf);
     console.log(`Wrote out/${file}`);
   }
 } finally {
