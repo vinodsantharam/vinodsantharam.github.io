@@ -18,6 +18,8 @@ export interface ResumeMapData {
   // Short city names in the order they were lived in, latest last.
   journey: string[]
   current: string
+  // Birthplace, ringed as home when it is one of the map cities.
+  home?: CityStop
   firstYear: string
 }
 
@@ -87,6 +89,7 @@ export function getResumeMap(resume: Resume): ResumeMapData {
     route: routePath(path),
     journey: path.map((c) => c.name.split(',')[0]),
     current: path[path.length - 1]?.id ?? '',
+    home: byId[resume.birthplace.city],
     firstYear,
   }
 }

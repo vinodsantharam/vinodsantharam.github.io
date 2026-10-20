@@ -12,6 +12,8 @@ interface WorldMapSvgProps {
   label: string;
   // The city that glows and pulses; the others stay dimly lit.
   litId?: string;
+  // Birthplace: a steady double ring, so it reads as home at a glance.
+  homeId?: string;
   // Remote work spreads the glow wider around the lit city.
   remote?: boolean;
   // Camera transform for the resume map's drift-to-city.
@@ -32,6 +34,7 @@ export function WorldMapSvg({
   route,
   label,
   litId,
+  homeId,
   remote = false,
   transform,
   viewBox = `0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`,
@@ -73,6 +76,14 @@ export function WorldMapSvg({
         <path className="world-map-dots" d={inland} />
         <path className="world-map-dots is-coast" d={coast} />
         <path className="world-map-route" d={route} />
+        {cities
+          .filter((c) => c.id === homeId)
+          .map((c) => (
+            <g key="home" className="world-map-home">
+              <circle cx={c.x} cy={c.y} r={9} />
+              <circle cx={c.x} cy={c.y} r={13} />
+            </g>
+          ))}
         {cities.map((c) => {
           const lit = c.id === litId;
           return (

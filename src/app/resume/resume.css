@@ -190,6 +190,11 @@
   gap: 12px 16px;
 }
 
+.resume-head > div {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
 .resume-name {
   font: 600 28px/1.1 var(--r-mono);
   letter-spacing: -0.03em;
@@ -200,6 +205,26 @@
   margin: 8px 0 0;
   color: var(--r-muted);
   max-width: 52ch;
+}
+
+.resume-origin {
+  margin: 6px 0 0;
+  font: 400 12px/1.5 var(--r-mono);
+  color: var(--r-muted);
+}
+
+/* The only flag on the site: a 3-pixel tricolor tick. */
+.resume-tricolor {
+  display: inline-block;
+  vertical-align: 1px;
+  margin-right: 8px;
+  width: 18px;
+  height: 6px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, #2b4c9b 0 33.3%, #e8e8e8 0 66.6%, #c2393a 0);
+  box-shadow: 0 0 0 0.5px rgb(0 0 0 / 0.15);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 
 .resume-download {

@@ -3,6 +3,11 @@
   "headline": "Staff Engineer · Frontend · UX",
   "tagline": "Staff engineer who designs the UX before writing the code.",
   "location": "Bangkok, Thailand",
+  "citizenship": "French",
+  "birthplace": {
+    "city": "strasbourg",
+    "name": "Strasbourg, France"
+  },
   "summary": "Software engineer building products since 2010, combining strong technical expertise with mentoring and team-building. Deeply passionate about product design and user experience, I strive to bridge the gap between engineering and customer value.",
   "contact": {
     "email": "vinod.santharam@gmail.com",

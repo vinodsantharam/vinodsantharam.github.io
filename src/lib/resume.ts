@@ -86,6 +86,12 @@ export interface Resume {
   headline: string
   tagline: string
   location: string
+  citizenship: string
+  // Where Vinod was born; `city` is a map city id, ringed as home on the maps.
+  birthplace: {
+    city: string
+    name: string
+  }
   summary: string
   contact: {
     email: string

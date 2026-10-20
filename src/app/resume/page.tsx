@@ -246,6 +246,11 @@ export default async function ResumePage() {
       <div>
         <h1 className="resume-name">{resume.name}</h1>
         <p className="resume-tagline">{resume.tagline}</p>
+        <p className="resume-origin">
+          <span className="resume-tricolor" aria-hidden="true" />
+          {resume.citizenship} citizen (EU) · born in{" "}
+          {resume.birthplace.name.split(",")[0]}
+        </p>
       </div>
       {/* Generated from this page's print layout on every deploy
           (scripts/build-resume-pdf.mjs). Always the full story. */}
@@ -286,6 +291,7 @@ export default async function ResumePage() {
             step={map.step}
             cities={map.stops}
             route={map.route}
+            home={map.home}
             defaultTitle={map.journey.join(" → ")}
             defaultYears={`${map.firstYear} → now`}
           />
@@ -417,6 +423,8 @@ export default async function ResumePage() {
             url: `${siteConfig.url}/resume/`,
             jobTitle: resume.headline,
             address: resume.location,
+            nationality: { "@type": "Country", name: "France" },
+            birthPlace: resume.birthplace.name,
             sameAs: [resume.contact.linkedin, resume.contact.github],
           }),
         }}

@@ -12,6 +12,7 @@ interface ResumeMapProps {
   step: number;
   cities: CityStop[];
   route: string;
+  home?: CityStop;
   defaultTitle: string;
   defaultYears: string;
 }
@@ -43,6 +44,7 @@ export function ResumeMap({
   step,
   cities,
   route,
+  home,
   defaultTitle,
   defaultYears,
 }: ResumeMapProps) {
@@ -145,7 +147,9 @@ export function ResumeMap({
   const title = city
     ? `${city.name}${active?.remote ? " · remote" : ""}`
     : (active?.place ?? defaultTitle);
-  const detail = active?.label ?? "Hover a role to follow it on the map.";
+  const detail =
+    active?.label ??
+    `${home ? `Ringed: ${home.name.split(",")[0]}, where I was born. ` : ""}Hover a role to follow it on the map.`;
 
   return (
     <div className="resume-map">
@@ -162,9 +166,10 @@ export function ResumeMap({
           step={step}
           cities={cities}
           route={route}
+          homeId={home?.id}
           label={`World map of the cities Vinod has worked in: ${cities
             .map((c) => c.name)
-            .join(", ")}`}
+            .join(", ")}${home ? `. Born in ${home.name}` : ""}`}
           litId={city?.id}
           remote={active?.remote}
           transform={transform}
