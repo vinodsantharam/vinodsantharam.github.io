@@ -148,4 +148,8 @@ None of this is new. Most of it is in a book first published in 1988, written ab
 
 So here's my ask to product owners, developers and QA alike. Next time you test a form, don't fill it in carefully from top to bottom, like the happy path in the ticket. Skip a field. Scroll around. Hit _Confirm_ way too early. Be the impatient human your users actually are.
 
+Here's the same form, with the same missing field, built the way I'd build it:
+
+![The same merchant onboarding form, done right. Confirm is enabled from the start. One click scrolls the page up to the empty Postal code field, outlines it in red and says "Enter a postal code, like 10110." The user types it, the error clears, and Confirm goes through on the first try.](/forms-missing-field-fixed.gif)
+
 If the form tells you, in that moment, exactly what it needs and takes you there, it's a good form. If you find yourself scrolling up and down looking for a `*`, you've just met the door that should have said _pull_.
