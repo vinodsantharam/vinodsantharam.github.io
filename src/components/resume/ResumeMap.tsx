@@ -147,9 +147,7 @@ export function ResumeMap({
   const title = city
     ? `${city.name}${active?.remote ? " · remote" : ""}`
     : (active?.place ?? defaultTitle);
-  const detail =
-    active?.label ??
-    `${home ? `Ringed: ${home.name.split(",")[0]}, where I was born. ` : ""}Hover a role to follow it on the map.`;
+  const detail = active?.label ?? "Hover a role to follow it on the map.";
 
   return (
     <div className="resume-map">

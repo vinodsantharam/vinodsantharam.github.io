@@ -9,9 +9,7 @@ export function MapStrip() {
   const map = getResumeMap(getResume());
   const now = map.stops.find((c) => c.id === map.current);
   // Latest first, each city once (Montréal was home twice).
-  const before = [...new Set(map.journey.slice(0, -1).reverse())].map((c) =>
-    c === map.home?.name.split(",")[0] ? `born in ${c}` : c,
-  );
+  const before = [...new Set(map.journey.slice(0, -1).reverse())];
 
   return (
     <figure className="m-0 rounded-xl bg-night p-3.5 grid gap-2.5 min-w-0">

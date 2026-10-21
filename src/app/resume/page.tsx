@@ -248,8 +248,7 @@ export default async function ResumePage() {
         <p className="resume-tagline">{resume.tagline}</p>
         <p className="resume-origin">
           <span className="resume-tricolor" aria-hidden="true" />
-          {resume.citizenship} citizen (EU) · born in{" "}
-          {resume.birthplace.name.split(",")[0]}
+          {resume.citizenship} citizen (EU)
         </p>
       </div>
       {/* Generated from this page's print layout on every deploy
