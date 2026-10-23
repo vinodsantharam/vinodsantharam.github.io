@@ -49,6 +49,16 @@ Another GUI tool to install? No, thank you. TUIs (terminal user interfaces) have
 
 That's how [redis-pane](https://github.com/redis-pane/redis-pane) was born: a terminal UI for Redis. Simple connection management, with a URL or a config file. The basic features you expect, and some more advanced ones. And the one that started it all: the key you have open updates live, the moment it changes on the server. There is no refresh button, because you don't need one.
 
+Want to try it? On macOS or Linux:
+
+```
+brew install redis-pane/tap/redis-pane
+```
+
+Other platforms (Linux without Homebrew, Windows) are in the [installation guide](https://redis-pane.github.io/redis-pane/docs/getting-started/installation/). Then run `redis-pane` and it connects to `127.0.0.1:6379`, or `redis-pane --url redis://your-host:6379` for anything else.
+
+How does it know? It doesn't poll, and there's no timer. Since Redis 6, a client can ask the server to tell it when a key it read has changed (RESP3 `CLIENT TRACKING`). redis-pane asks for exactly that on the key you have open. When the server says "this key changed", it reads the key again and re-arms the notification. It never keeps a cached copy of the value, so there's nothing that could go stale, and nothing to refresh. If the server can't send those notifications, the header says so instead of quietly pretending. [How live updates work](https://redis-pane.github.io/redis-pane/docs/viewing/live-updates/)
+
 And the lost value? If the key you have open is no longer the one selected in the list, the value pane says so (`⊘ not the selected key`), and one keystroke brings the list back to it. If the key is deleted or expires, the pane keeps the last value it read and badges it `✕ deleted 3s ago`. A value never pretends to be something it isn't.
 
 ![redis-pane in a terminal: filtering to a key, opening it, then watching its value update on screen the moment another client changes it, with no keypress and no refresh.](/redis-pane-hero.gif)
@@ -60,3 +70,5 @@ Honestly, I haven't had this much fun in a long time. I didn't write the code. I
 Even if nobody else ends up using redis-pane, building it over the last few weeks has been so cool. And I will definitely use it myself, haha.
 
 You can find it on [GitHub](https://github.com/redis-pane/redis-pane), with the docs at [redis-pane.github.io/redis-pane](https://redis-pane.github.io/redis-pane/).
+
+*redis-pane is an independent open-source project. It is not affiliated with, endorsed or supported by Redis Ltd. Redis and RedisInsight are trademarks of Redis Ltd.*
