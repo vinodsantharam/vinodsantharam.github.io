@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllMarkdownPosts } from "@/lib/markdown";
+import { getPortfolioEntries } from "@/lib/portfolio";
 import { siteConfig } from "@/lib/site";
 
 // Statically generated at build time (output: 'export') -> /sitemap.xml
@@ -26,5 +27,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  return [...staticRoutes, ...blogRoutes];
+  const portfolioRoutes: MetadataRoute.Sitemap = [
+    { url: `${siteConfig.url}/portfolio/`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    ...getPortfolioEntries().map((entry) => ({
+      url: `${siteConfig.url}/portfolio/${entry.slug}/`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+  ];
+
+  return [...staticRoutes, ...portfolioRoutes, ...blogRoutes];
 }

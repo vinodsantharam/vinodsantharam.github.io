@@ -28,6 +28,7 @@ const sourceSerif = Source_Serif_4({
 });
 
 const navLinks = [
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/blog", label: "Writing" },
   { href: "/books", label: "Books" },
 ];
@@ -105,7 +106,7 @@ export default function RootLayout({
                   </span>
                   <span className="hidden sm:inline">Vinod Santharam</span>
                 </Link>
-                <div className="flex items-center gap-3.5 sm:gap-6 text-sm">
+                <div className="flex items-center gap-2.5 sm:gap-6 text-sm">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -125,7 +126,7 @@ export default function RootLayout({
                     href="https://github.com/vinodsantharam"
                     aria-label="GitHub"
                     title="GitHub"
-                    className="grid place-items-center size-9 rounded-md text-foreground hover:bg-accent transition-colors"
+                    className="hidden sm:grid place-items-center size-9 rounded-md text-foreground hover:bg-accent transition-colors"
                   >
                     <Github className="size-[1.2rem]" aria-hidden="true" />
                   </a>
